@@ -40,8 +40,8 @@ file.onreadystatechange = function () {
 
     if (window.location.search) {
       const urlParams = new URLSearchParams(window.location.search);
-      userID = 'ur' + urlParams.get('id').replace(/\D/g, '');
-      window.history.pushState("", "", 'user?id=' + userID);
+      userID = urlParams.get('id').match(/(ur\d+)/)[0];
+      window.history.pushState("", "", 'user.html?id=' + userID);
     }
 
     var userData = mydata['polls'].filter(obj => {
