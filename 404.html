@@ -61,7 +61,11 @@
 
   <script>
     console.log(window.location.href)
-    console.log((window.location.href).match(/(ur\d+)/)[0])
+    userID = window.location.href.match(/(ur\d+)/)
+    if (userID) {
+      userID = userID[0]
+      location.href = 'user?id=' + userID
+    }
   </script>
 </body>
 
