@@ -40,7 +40,10 @@ file.onreadystatechange = function () {
 
     if (window.location.search) {
       const urlParams = new URLSearchParams(window.location.search);
-      userID = urlParams.get('id').match(/(ur\d+)/)[0];
+      userID = urlParams.get('id').match(/(ur\d+)/);
+      if (userID) {
+        userID = userID[0]
+      }
       window.history.pushState("", "", 'user?id=' + userID);
     }
 
