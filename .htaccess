@@ -1,6 +1,7 @@
 RewriteEngine on
+
+RewriteRule ^user/(.*)$ /user?id=$1 [R=301,NC,L]
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [NC,L]
-
-RewriteRule ^user/(.*)$ /user?id=$1 [R=301,NC,L]
