@@ -1,0 +1,99 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Testing</title>
+  <link rel="shortcut icon" href="img/imdbpoll.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+
+  <style>
+    body {
+      margin: 25px 25px;
+      font-size: larger;
+    }
+
+    td {
+      font-size: larger;
+    }
+  </style>
+</head>
+
+<body>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Default (no format)</th>
+        <th scope="col">Your browser format (<span id="userLan"></span>)</th>
+        <th scope="col">Forced English (US) format</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>100</td>
+        <td class="browser">100</td>
+        <td class="custom">100</td>
+      </tr>
+      <tr>
+        <td>1000</td>
+        <td class="browser">1000</td>
+        <td class="custom">1000</td>
+      </tr>
+      <tr>
+        <td>10000</td>
+        <td class="browser">10000</td>
+        <td class="custom">10000</td>
+      </tr>
+      <tr>
+        <td>10000.11</td>
+        <td class="browser">10000.11</td>
+        <td class="custom">10000.11</td>
+      </tr>
+      <tr>
+        <td>1000.101</td>
+        <td class="browser">1000.101</td>
+        <td class="custom">1000.101</td>
+      </tr>
+      <tr>
+        <td>100000</td>
+        <td class="browser">100000</td>
+        <td class="custom">100000</td>
+      </tr>
+      <tr>
+        <td>10000000</td>
+        <td class="browser">10000000</td>
+        <td class="custom">10000000</td>
+      </tr>
+      <tr>
+        <td><input type="number" id="input" class="form-control" placeholder="Enter a number"></td>
+        <td id="browser-output"></td>
+        <td id="custom-output"></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <script src="assets/bootstrap.bundle.min.js"></script>
+  <script src="assets/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $('#userLan').html(navigator.language)
+
+    var browser = document.getElementsByClassName("browser")
+    var custom = document.getElementsByClassName("custom")
+    for (let i = 0; i < browser.length; i++) {
+      browser[i].innerHTML = parseFloat(browser[i].innerHTML).toLocaleString()
+      custom[i].innerHTML = parseFloat(custom[i].innerHTML).toLocaleString('en-US')
+    }
+
+    $('#input').on('input', function () {
+      $('#browser-output').html(parseFloat($(this).val()).toLocaleString())
+      $('#custom-output').html(parseFloat($(this).val()).toLocaleString('en-US'))
+    })
+  </script>
+</body>
+
+</html>
