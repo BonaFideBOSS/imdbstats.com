@@ -1,3 +1,4 @@
+# robots.txt for https://www.imdbstats.com properties
 User-Agent: *
 Allow: /
 Disallow:
