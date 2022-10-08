@@ -36,7 +36,7 @@ currentPoll = 0
 errors = 0
 failedlinks = []
 
-errorpolls = []
+errorpolls = ['https://www.imdb.com/poll/3ueRjryubZ8/']
 
 for i in data["polls"]:
     pollLink = i["url"]
