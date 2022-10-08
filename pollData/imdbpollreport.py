@@ -7,6 +7,8 @@ import requests
 from bs4 import BeautifulSoup
 import traceback
 
+from sys import exit
+
 tz = timezone("EST")
 timerstart = datetime.now()
 
