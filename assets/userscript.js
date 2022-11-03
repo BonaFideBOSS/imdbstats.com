@@ -2,27 +2,10 @@ const file = new XMLHttpRequest();
 file.open("GET", "pollData/allimdbpolls.json");
 file.send();
 file.onreadystatechange = function () {
-  var pollyears = []
-  var polls2013 = 0
-  var polls2013Months = []
-  var polls2014 = 0
-  var polls2014Months = []
-  var polls2015 = 0
-  var polls2015Months = []
-  var polls2016 = 0
-  var polls2016Months = []
-  var polls2017 = 0
-  var polls2017Months = []
-  var polls2018 = 0
-  var polls2018Months = []
-  var polls2019 = 0
-  var polls2019Months = []
-  var polls2020 = 0
-  var polls2020Months = []
-  var polls2021 = 0
-  var polls2021Months = []
-  var polls2022 = 0
-  var polls2022Months = []
+  var pollTimeline = {
+    "years": [],
+    "pollsInEachYear": []
+  }
 
   if (this.readyState == 4 && this.status == 200) {
     var mydata = JSON.parse(file.responseText)
@@ -33,7 +16,6 @@ file.onreadystatechange = function () {
     if (hashFilter) {
       if (mydata['authors'].some(i => i.authorid == hashFilter)) {
         userID = hashFilter
-        console.log(hashFilter)
         location.href = 'user?id=' + hashFilter
       }
     }
@@ -156,27 +138,26 @@ file.onreadystatechange = function () {
           var month = userData[i].date.split('/')[1].replace(/^0+/, '')
           var day = userData[i].date.split('/')[2].replace(/^0+/, '')
         }
-        pollyears.push(year)
-        if (year == 2013) {
-          polls2013Months.push(month)
-        } else if (year == 2014) {
-          polls2014Months.push(month)
-        } else if (year == 2015) {
-          polls2015Months.push(month)
-        } else if (year == 2016) {
-          polls2016Months.push(month)
-        } else if (year == 2017) {
-          polls2017Months.push(month)
-        } else if (year == 2018) {
-          polls2018Months.push(month)
-        } else if (year == 2019) {
-          polls2019Months.push(month)
-        } else if (year == 2020) {
-          polls2020Months.push(month)
-        } else if (year == 2021) {
-          polls2021Months.push(month)
-        } else if (year == 2022) {
-          polls2022Months.push(month)
+
+        if (!(pollTimeline["years"].includes(year))) {
+          pollTimeline["years"].push(year)
+          pollTimeline["pollsInEachYear"].push({
+            "year": year,
+            "total": 0,
+            "months": {}
+          })
+        }
+
+        for (let index = 0; index < pollTimeline["pollsInEachYear"].length; index++) {
+          if (pollTimeline["pollsInEachYear"][index].year == year) {
+            pollTimeline["pollsInEachYear"][index].total++
+
+            if (readableMonth(parseInt(month)) in pollTimeline["pollsInEachYear"][index].months) {
+              pollTimeline["pollsInEachYear"][index].months[readableMonth(parseInt(month))]++
+            } else {
+              pollTimeline["pollsInEachYear"][index].months[readableMonth(parseInt(month))] = 1
+            }
+          }
         }
 
         $(tableBody).append('<tr><td></td>' +
@@ -266,12 +247,9 @@ file.onreadystatechange = function () {
           }
         }
 
-        var uniqueyears = pollyears.filter((item, i, ar) => ar.indexOf(item) === i);
-        var yearoptions;
-        for (var i = 0; i < uniqueyears.length; i++) {
-          yearoptions += "<option>" + uniqueyears[i] + "</option>";
-        }
-        $('#year-filter').append(yearoptions)
+        pollTimeline["years"].forEach(i => {
+          $('#year-filter').append("<option>" + i + "</option>")
+        })
 
         $('#entries').on('change', function () {
           var selectedValue = $(this).val();
@@ -353,52 +331,6 @@ file.onreadystatechange = function () {
         Chart.defaults.plugins.tooltip.intersect = false;
         Chart.defaults.plugins.tooltip.padding = '10';
         Chart.defaults.plugins.tooltip.footerMarginTop = 15;
-
-        const pollineachyear = {};
-        const months2013 = {};
-        const months2014 = {};
-        const months2015 = {};
-        const months2016 = {};
-        const months2017 = {};
-        const months2018 = {};
-        const months2019 = {};
-        const months2020 = {};
-        const months2021 = {};
-        const months2022 = {};
-        pollyears.forEach(function (x) {
-          pollineachyear[x] = (pollineachyear[x] || 0) + 1;
-        });
-        polls2013Months.forEach(function (x) {
-          months2013[x] = (months2013[x] || 0) + 1;
-        });
-        polls2014Months.forEach(function (x) {
-          months2014[x] = (months2014[x] || 0) + 1;
-        });
-        polls2015Months.forEach(function (x) {
-          months2015[x] = (months2015[x] || 0) + 1;
-        });
-        polls2016Months.forEach(function (x) {
-          months2016[x] = (months2016[x] || 0) + 1;
-        });
-        polls2017Months.forEach(function (x) {
-          months2017[x] = (months2017[x] || 0) + 1;
-        });
-        polls2018Months.forEach(function (x) {
-          months2018[x] = (months2018[x] || 0) + 1;
-        });
-        polls2019Months.forEach(function (x) {
-          months2019[x] = (months2019[x] || 0) + 1;
-        });
-        polls2020Months.forEach(function (x) {
-          months2020[x] = (months2020[x] || 0) + 1;
-        });
-        polls2021Months.forEach(function (x) {
-          months2021[x] = (months2021[x] || 0) + 1;
-        });
-        polls2022Months.forEach(function (x) {
-          months2022[x] = (months2022[x] || 0) + 1;
-        });
-
 
         // ===== MILESTONES =====
         var m1 = Math.ceil(totalPolls / 50) * 50;
@@ -526,84 +458,39 @@ file.onreadystatechange = function () {
             }
           }
         };
+
+        new Chart(
+          document.getElementById('milestoneOne'),
+          milestoneChartOne
+        );
+        new Chart(
+          document.getElementById('milestoneTwo'),
+          milestoneChartTwo
+        );
+        new Chart(
+          document.getElementById('milestoneThree'),
+          milestoneChartThree
+        );
+        new Chart(
+          document.getElementById('milestoneFour'),
+          milestoneChartFour
+        );
+
         // ===== STATISTICS =====
+
         const chartColors = ['#6610f2', '#6f42c1', '#d63384', '#fd7e14', '#20c997', '#0d6efd', '#198754', '#0dcaf0', '#ffc107', '#dc3545', ]
+
+        const polllEachYear = []
+        pollTimeline["pollsInEachYear"].forEach(i => {
+          polllEachYear.push(i.total)
+        })
+
         const yearAll = {
-          labels: Object.keys(pollineachyear),
+          labels: pollTimeline["years"],
           datasets: [{
             backgroundColor: 'rgb(255,193,7,.5)',
             borderColor: '#ffc107',
-            data: Object.values(pollineachyear),
-          }]
-        };
-        const year2013 = {
-          labels: monthsChecker(Object.keys(months2013)),
-          datasets: [{
-            backgroundColor: chartColors.sample(),
-            data: Object.values(months2013),
-          }]
-        };
-        const year2014 = {
-          labels: monthsChecker(Object.keys(months2014)),
-          datasets: [{
-            backgroundColor: chartColors.sample(),
-            data: Object.values(months2014),
-          }]
-        };
-        const year2015 = {
-          labels: monthsChecker(Object.keys(months2015)),
-          datasets: [{
-            backgroundColor: chartColors.sample(),
-            data: Object.values(months2015),
-          }]
-        };
-        const year2016 = {
-          labels: monthsChecker(Object.keys(months2016)),
-          datasets: [{
-            backgroundColor: chartColors.sample(),
-            data: Object.values(months2016),
-          }]
-        };
-        const year2017 = {
-          labels: monthsChecker(Object.keys(months2017)),
-          datasets: [{
-            backgroundColor: chartColors.sample(),
-            data: Object.values(months2017),
-          }]
-        };
-        const year2018 = {
-          labels: monthsChecker(Object.keys(months2018)),
-          datasets: [{
-            backgroundColor: chartColors.sample(),
-            data: Object.values(months2018),
-          }]
-        };
-        const year2019 = {
-          labels: monthsChecker(Object.keys(months2019)),
-          datasets: [{
-            backgroundColor: chartColors.sample(),
-            data: Object.values(months2019),
-          }]
-        };
-        const year2020 = {
-          labels: monthsChecker(Object.keys(months2020)),
-          datasets: [{
-            backgroundColor: chartColors.sample(),
-            data: Object.values(months2020),
-          }]
-        };
-        const year2021 = {
-          labels: monthsChecker(Object.keys(months2021)),
-          datasets: [{
-            backgroundColor: chartColors.sample(),
-            data: Object.values(months2021),
-          }]
-        };
-        const year2022 = {
-          labels: monthsChecker(Object.keys(months2022)),
-          datasets: [{
-            backgroundColor: chartColors.sample(),
-            data: Object.values(months2022),
+            data: polllEachYear,
           }]
         };
 
@@ -625,246 +512,44 @@ file.onreadystatechange = function () {
             }
           }
         };
-        const monthChart2013 = {
-          type: 'bar',
-          data: year2013,
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "Polls Published in 2013",
-                font: {
-                  size: 16
-                }
-              },
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
-        const monthChart2014 = {
-          type: 'bar',
-          data: year2014,
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "Polls Published in 2014",
-                font: {
-                  size: 16
-                }
-              },
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
-        const monthChart2015 = {
-          type: 'bar',
-          data: year2015,
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "Polls Published in 2015",
-                font: {
-                  size: 16
-                }
-              },
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
-        const monthChart2016 = {
-          type: 'bar',
-          data: year2016,
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "Polls Published in 2016",
-                font: {
-                  size: 16
-                }
-              },
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
-        const monthChart2017 = {
-          type: 'bar',
-          data: year2017,
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "Polls Published in 2017",
-                font: {
-                  size: 16
-                }
-              },
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
-        const monthChart2018 = {
-          type: 'bar',
-          data: year2018,
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "Polls Published in 2018",
-                font: {
-                  size: 16
-                }
-              },
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
-        const monthChart2019 = {
-          type: 'bar',
-          data: year2019,
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "Polls Published in 2019",
-                font: {
-                  size: 16
-                }
-              },
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
-        const monthChart2020 = {
-          type: 'bar',
-          data: year2020,
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "Polls Published in 2020",
-                font: {
-                  size: 16
-                }
-              },
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
-        const monthChart2021 = {
-          type: 'bar',
-          data: year2021,
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "Polls Published in 2021",
-                font: {
-                  size: 16
-                }
-              },
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
-        const monthChart2022 = {
-          type: 'bar',
-          data: year2022,
-          options: {
-            plugins: {
-              title: {
-                display: true,
-                text: "Polls Published in 2022",
-                font: {
-                  size: 16
-                }
-              },
-              legend: {
-                display: false
-              }
-            }
-          }
-        };
 
-        new Chart(
-          document.getElementById('milestoneOne'),
-          milestoneChartOne
-        );
-        new Chart(
-          document.getElementById('milestoneTwo'),
-          milestoneChartTwo
-        );
-        new Chart(
-          document.getElementById('milestoneThree'),
-          milestoneChartThree
-        );
-        new Chart(
-          document.getElementById('milestoneFour'),
-          milestoneChartFour
-        );
         new Chart(
           document.getElementById('YearChart'),
           yearChart
         );
-        if (2013 in pollineachyear) {
-          $('#2013MonthChart').parent().attr('hidden', false)
-          new Chart(document.getElementById('2013MonthChart'), monthChart2013);
-        }
-        if (2014 in pollineachyear) {
-          $('#2014MonthChart').parent().attr('hidden', false)
-          new Chart(document.getElementById('2014MonthChart'), monthChart2014);
-        }
-        if (2015 in pollineachyear) {
-          $('#2015MonthChart').parent().attr('hidden', false)
-          new Chart(document.getElementById('2015MonthChart'), monthChart2015);
-        }
-        if (2016 in pollineachyear) {
-          $('#2016MonthChart').parent().attr('hidden', false)
-          new Chart(document.getElementById('2016MonthChart'), monthChart2016);
-        }
-        if (2017 in pollineachyear) {
-          $('#2017MonthChart').parent().attr('hidden', false)
-          new Chart(document.getElementById('2017MonthChart'), monthChart2017);
-        }
-        if (2018 in pollineachyear) {
-          $('#2018MonthChart').parent().attr('hidden', false)
-          new Chart(document.getElementById('2018MonthChart'), monthChart2018);
-        }
-        if (2019 in pollineachyear) {
-          $('#2019MonthChart').parent().attr('hidden', false)
-          new Chart(document.getElementById('2019MonthChart'), monthChart2019);
-        }
-        if (2020 in pollineachyear) {
-          $('#2020MonthChart').parent().attr('hidden', false)
-          new Chart(document.getElementById('2020MonthChart'), monthChart2020);
-        }
-        if (2021 in pollineachyear) {
-          $('#2021MonthChart').parent().attr('hidden', false)
-          new Chart(document.getElementById('2021MonthChart'), monthChart2021);
-        }
-        if (2022 in pollineachyear) {
-          $('#2022MonthChart').parent().attr('hidden', false)
-          new Chart(document.getElementById('2022MonthChart'), monthChart2022);
+
+        for (let index = 0; index < pollTimeline["pollsInEachYear"].length; index++) {
+          const year = {
+            labels: Object.keys(pollTimeline["pollsInEachYear"][index].months),
+            datasets: [{
+              backgroundColor: chartColors.sample(),
+              data: Object.values(pollTimeline["pollsInEachYear"][index].months),
+            }]
+          };
+
+          const yearChart = {
+            type: 'bar',
+            data: year,
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Polls Published in " + pollTimeline["pollsInEachYear"][index].year,
+                  font: {
+                    size: 16
+                  }
+                },
+                legend: {
+                  display: false
+                }
+              }
+            }
+          };
+
+          var chart = '<div class="col-lg-6 col-12 mb-4"><canvas id="chart' + index + '"></canvas></div>'
+          $('#charts').append(chart)
+          new Chart(document.getElementById('chart' + index), yearChart);
+
         }
 
         $('.data-loader.loader-two').hide()
@@ -879,53 +564,50 @@ file.onreadystatechange = function () {
   }
 }
 
-function monthsChecker(months) {
-  const monthsArray = []
-  for (var i = 0; i < months.length; i++) {
-    switch (months[i]) {
-      case '1':
-        monthsArray.push('Jan')
-        break;
-      case '2':
-        monthsArray.push('Feb')
-        break;
-      case '3':
-        monthsArray.push('Mar')
-        break;
-      case '4':
-        monthsArray.push('Apr')
-        break;
-      case '5':
-        monthsArray.push('May')
-        break;
-      case '6':
-        monthsArray.push('Jun')
-        break;
-      case '7':
-        monthsArray.push('Jul')
-        break;
-      case '8':
-        monthsArray.push('Aug')
-        break;
-      case '9':
-        monthsArray.push('Sep')
-        break;
-      case '10':
-        monthsArray.push('Oct')
-        break;
-      case '11':
-        monthsArray.push('Nov')
-        break;
-      case '12':
-        monthsArray.push('Dec')
-        break;
-      default:
-        break;
-    }
+function readableMonth(month) {
+  var result;
+  switch (month) {
+    case 1:
+      result = 'Jan'
+      break;
+    case 2:
+      result = 'Feb'
+      break;
+    case 3:
+      result = 'Mar'
+      break;
+    case 4:
+      result = 'Apr'
+      break;
+    case 5:
+      result = 'May'
+      break;
+    case 6:
+      result = 'Jun'
+      break;
+    case 7:
+      result = 'Jul'
+      break;
+    case 8:
+      result = 'Aug'
+      break;
+    case 9:
+      result = 'Sep'
+      break;
+    case 10:
+      result = 'Oct'
+      break;
+    case 11:
+      result = 'Nov'
+      break;
+    case 12:
+      result = 'Dec'
+      break;
+    default:
+      break;
   }
-  return monthsArray
+  return result
 }
-
 
 function timelapse(date) {
   var currentDateTime = new Date()
