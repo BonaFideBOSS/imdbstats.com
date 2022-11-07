@@ -2,6 +2,12 @@ const file = new XMLHttpRequest();
 file.open("GET", "pollData/allimdbpolls.json");
 file.send();
 file.onreadystatechange = function () {
+  var pollTypes = {
+    "Title": 0,
+    "People": 0,
+    "Image": 0,
+    "Character": 0
+  }
   var pollTimeline = {
     "years": [],
     "pollsInEachYear": []
@@ -94,6 +100,16 @@ file.onreadystatechange = function () {
           $('#latest-poll .card-title').html(latestPoll.title)
           $('#latest-poll .card-text span').html(latestPoll.votes)
           $('#latest-poll a').attr("href", latestPoll.url)
+        }
+
+        if (userData[i].type == "Titles") {
+          pollTypes["Title"]++
+        } else if (userData[i].type == "People") {
+          pollTypes["People"]++
+        } else if (userData[i].type == "Images") {
+          pollTypes["Image"]++
+        } else if (userData[i].type == "Characters") {
+          pollTypes["Character"]++
         }
 
         const oneDay = 24 * 60 * 60 * 1000;
@@ -478,7 +494,94 @@ file.onreadystatechange = function () {
 
         // ===== STATISTICS =====
 
-        const chartColors = ['#6610f2', '#6f42c1', '#d63384', '#fd7e14', '#20c997', '#0d6efd', '#198754', '#0dcaf0', '#ffc107', '#dc3545', ]
+        const chartColors = ['#4dc9f6',
+          '#f67019',
+          '#f53794',
+          '#537bc4',
+          '#acc236',
+          '#166a8f',
+          '#00a950',
+          '#58595b',
+          '#8549ba',
+          '#6610f2',
+          '#6f42c1',
+          '#d63384',
+          '#fd7e14',
+          '#20c997',
+          '#0d6efd',
+          '#198754',
+          '#0dcaf0',
+          '#ffc107',
+          '#dc3545'
+        ]
+
+        const pollTypeGraph = {
+          labels: Object.keys(pollTypes),
+          datasets: [{
+            backgroundColor: chartColors,
+            data: Object.values(pollTypes),
+          }]
+        };
+
+        const pollTypeConfig = {
+          type: 'doughnut',
+          data: pollTypeGraph,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  generateLabels(chart) {
+                    const data = chart.data;
+                    if (data.labels.length && data.datasets.length) {
+                      const {
+                        labels: {
+                          pointStyle
+                        }
+                      } = chart.legend.options;
+
+                      return data.labels.map((label, i) => {
+                        const meta = chart.getDatasetMeta(0);
+                        const style = meta.controller.getStyle(i);
+
+                        return {
+                          text: label + ' (' + data.datasets[0].data[i] + ')',
+                          fillStyle: style.backgroundColor,
+                          strokeStyle: style.borderColor,
+                          lineWidth: style.borderWidth,
+                          pointStyle: pointStyle,
+                          hidden: !chart.getDataVisibility(i),
+
+                          // Extra data used for toggling the correct item
+                          index: i
+                        };
+                      });
+                    }
+                    return [];
+                  }
+                },
+
+                onClick(e, legendItem, legend) {
+                  legend.chart.toggleDataVisibility(legendItem.index);
+                  legend.chart.update();
+                },
+              },
+              title: {
+                display: true,
+                text: 'Types of Polls',
+                font: {
+                  size: 16
+                }
+              }
+            }
+          },
+        };
+
+        new Chart(
+          document.getElementById('typeChart'),
+          pollTypeConfig
+        );
 
         const polllEachYear = []
         pollTimeline["pollsInEachYear"].forEach(i => {
@@ -527,7 +630,7 @@ file.onreadystatechange = function () {
             }]
           };
 
-          const yearChart = {
+          const monthChart = {
             type: 'bar',
             data: year,
             options: {
@@ -546,9 +649,9 @@ file.onreadystatechange = function () {
             }
           };
 
-          var chart = '<div class="col-lg-6 col-12 mb-4"><canvas id="chart' + index + '"></canvas></div>'
+          var chart = '<div class="col-lg-6 col-md-6 col-12 mb-4"><canvas id="chart' + index + '"></canvas></div>'
           $('#charts').append(chart)
-          new Chart(document.getElementById('chart' + index), yearChart);
+          new Chart(document.getElementById('chart' + index), monthChart);
 
         }
 
@@ -562,88 +665,4 @@ file.onreadystatechange = function () {
       location.href = '404'
     }
   }
-}
-
-function readableMonth(month) {
-  var result;
-  switch (month) {
-    case 1:
-      result = 'Jan'
-      break;
-    case 2:
-      result = 'Feb'
-      break;
-    case 3:
-      result = 'Mar'
-      break;
-    case 4:
-      result = 'Apr'
-      break;
-    case 5:
-      result = 'May'
-      break;
-    case 6:
-      result = 'Jun'
-      break;
-    case 7:
-      result = 'Jul'
-      break;
-    case 8:
-      result = 'Aug'
-      break;
-    case 9:
-      result = 'Sep'
-      break;
-    case 10:
-      result = 'Oct'
-      break;
-    case 11:
-      result = 'Nov'
-      break;
-    case 12:
-      result = 'Dec'
-      break;
-    default:
-      break;
-  }
-  return result
-}
-
-function timelapse(date) {
-  var currentDateTime = new Date()
-  var difference = Math.abs(currentDateTime - new Date(date))
-
-  var mm = difference;
-  var sec = Math.ceil(difference / (1000))
-  var min = Math.ceil(difference / (1000 * 60))
-  var hr = Math.round(difference / (1000 * 60 * 60))
-  var day = Math.round(difference / (1000 * 60 * 60 * 24))
-  var month = Math.round(difference / (1000 * 60 * 60 * 24 * 30))
-  var year = Math.round(difference / (1000 * 60 * 60 * 24 * 30 * 12))
-
-  difference = mm + ' milliseconds ago';
-  if (sec >= 1 && sec < 60) {
-    var text = (sec > 1) ? ' seconds ago' : ' second ago'
-    difference = sec + text;
-  } else if (min >= 1 && min < 60) {
-    var text = (min > 1) ? ' minutes ago' : ' minute ago'
-    difference = min + text;
-  } else if (hr >= 1 && hr < 24) {
-    var text = (hr > 1) ? ' hours ago' : ' hour ago'
-    difference = hr + text
-  } else if (day >= 1 && day < 30) {
-    var text = (day > 1) ? ' days ago' : ' day ago'
-    difference = day + text
-  } else if (month >= 1 && month < 12) {
-    var text = (month > 1) ? ' months ago' : ' month ago'
-    difference = month + text
-  } else if (year >= 1) {
-    var text = (year > 1) ? ' years ago' : ' year ago'
-    difference = year + text
-  }
-  return difference
-}
-
-Array.prototype.sample = function () {
-  return this[Math.floor(Math.random() * this.length)];
 }

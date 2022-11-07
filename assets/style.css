@@ -63,6 +63,12 @@ input:focus {
   border: #ffc107 1px solid !important;
 }
 
+.list-group-item.active {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #000000;
+}
+
 .input-group #search-filter.hp {
   width: max-content !important;
   max-width: max-content !important;

@@ -2,6 +2,27 @@ const file = new XMLHttpRequest();
 file.open("GET", "pollData/allimdbpolls.json");
 file.send();
 file.onreadystatechange = function () {
+
+  var pollTypes = {
+    "Total": {
+      "Title": 0,
+      "People": 0,
+      "Image": 0,
+      "Character": 0
+    },
+    "Users": {
+      "Title": 0,
+      "People": 0,
+      "Image": 0,
+      "Character": 0
+    }
+  }
+  var pollTimeline = {
+    "years": [],
+    "pollsInEachYear": []
+  }
+
+
   if (this.readyState == 4 && this.status == 200) {
     var pollData = JSON.parse(file.responseText)
     var authors = pollData.authors
@@ -69,6 +90,24 @@ file.onreadystatechange = function () {
 
     var authorlist = []
     for (var i = 0; i < authors.length; i++) {
+
+      function upt(type) {
+        const count = polls.filter((obj) => (obj.authorid == authors[i].authorid) && obj.type == type).length;
+        return count
+      }
+      if (upt("Titles") != 0) {
+        pollTypes["Users"]["Title"]++
+      }
+      if (upt("Images") != 0) {
+        pollTypes["Users"]["Image"]++
+      }
+      if (upt("People") != 0) {
+        pollTypes["Users"]["People"]++
+      }
+      if (upt("Characters") != 0) {
+        pollTypes["Users"]["Character"]++
+      }
+
       var authorname = polls.filter(obj => {
         return obj['authorid'] === authors[i].authorid
       })
@@ -165,6 +204,60 @@ file.onreadystatechange = function () {
     var table = document.getElementById('allimdbpolls')
     var tablebody = table.getElementsByTagName('tbody')[0]
     for (var i = 0; i < polls.length; i++) {
+
+      if (polls[i].type == "Titles") {
+        pollTypes["Total"]["Title"]++
+      } else if (polls[i].type == "People") {
+        pollTypes["Total"]["People"]++
+      } else if (polls[i].type == "Images") {
+        pollTypes["Total"]["Image"]++
+      } else if (polls[i].type == "Characters") {
+        pollTypes["Total"]["Character"]++
+      }
+
+      if (polls[i].date) {
+        var year = polls[i].date.split('/')[0]
+        var month = polls[i].date.split('/')[1].replace(/^0+/, '')
+        var day = polls[i].date.split('/')[2].replace(/^0+/, '')
+      }
+
+      if (!(pollTimeline["years"].includes(year))) {
+        pollTimeline["years"].push(year)
+        pollTimeline["pollsInEachYear"].push({
+          "year": year,
+          "total": 0,
+          "months": {
+            'Jan': 0,
+            'Feb': 0,
+            'Mar': 0,
+            'Apr': 0,
+            'May': 0,
+            'Jun': 0,
+            'Jul': 0,
+            'Aug': 0,
+            'Sep': 0,
+            'Oct': 0,
+            'Nov': 0,
+            'Dec': 0
+          },
+          "userTotal": 0,
+          "userMonths": []
+        })
+      }
+
+      for (let index = 0; index < pollTimeline["pollsInEachYear"].length; index++) {
+        if (pollTimeline["pollsInEachYear"][index].year == year) {
+          pollTimeline["pollsInEachYear"][index].total++
+
+          if (readableMonth(parseInt(month)) in pollTimeline["pollsInEachYear"][index].months) {
+            pollTimeline["pollsInEachYear"][index].months[readableMonth(parseInt(month))]++
+          } else {
+            pollTimeline["pollsInEachYear"][index].months[readableMonth(parseInt(month))] = 1
+          }
+        }
+      }
+
+
       $(tablebody).append('<tr><td></td>' +
         '<td nowrap><a href="' + polls[i].url + '" target="_blank">' + polls[i].title + '</a></td>' +
         '<td><a href="user?id=' + polls[i].authorid + '">' + polls[i].author + '</a></td>' +
@@ -481,7 +574,362 @@ file.onreadystatechange = function () {
         }
       })
 
-      $('.data-loader.loader-one').hide()
+      for (let index = 0; index < pollTimeline["pollsInEachYear"].length; index++) {
+        for (let i2 = 0; i2 < authors.length; i2++) {
+          const count = polls.filter((obj) => (obj.authorid == authors[i2].authorid) && obj.date.split('/')[0] == pollTimeline["pollsInEachYear"][index].year);
+          if (count.length != 0) {
+            pollTimeline["pollsInEachYear"][index].userTotal++
+
+            const userMonth = [];
+
+            count.forEach(i => {
+              month = i.date.split('/')[1].replace(/^0+/, '')
+              if (!(userMonth.includes(month))) {
+                userMonth.push(month)
+              }
+            })
+
+            userMonth.forEach(j => {
+              if (readableMonth(parseInt(j)) in pollTimeline["pollsInEachYear"][index].userMonths) {
+                pollTimeline["pollsInEachYear"][index].userMonths[readableMonth(parseInt(j))]++
+              } else {
+                pollTimeline["pollsInEachYear"][index].userMonths[readableMonth(parseInt(j))] = 1
+              }
+            })
+
+          }
+        }
+      }
+
+      setTimeout(() => {
+        // ===== STATISTICS =====
+        Chart.defaults.plugins.tooltip.displayColors = false;
+        Chart.defaults.plugins.tooltip.intersect = false;
+        Chart.defaults.plugins.tooltip.padding = '10';
+        Chart.defaults.plugins.tooltip.footerMarginTop = 15;
+
+        const chartColors = ['#4dc9f6',
+          '#f67019',
+          '#f53794',
+          '#537bc4',
+          '#acc236',
+          '#00a950',
+          '#8549ba',
+          '#d63384',
+          '#20c997',
+          '#0d6efd',
+          '#6610f2',
+          '#198754',
+          '#0dcaf0',
+          '#ffc107',
+          '#dc3545',
+          '#6f42c1',
+          '#fcc477',
+          '#E1CE93'
+        ]
+
+        const pollTypeGraph = {
+          labels: Object.keys(pollTypes["Total"]),
+          datasets: [{
+            backgroundColor: chartColors,
+            data: Object.values(pollTypes["Total"]),
+          }]
+        };
+
+        const pollTypeConfig = {
+          type: 'doughnut',
+          data: pollTypeGraph,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  generateLabels(chart) {
+                    const data = chart.data;
+                    if (data.labels.length && data.datasets.length) {
+                      const {
+                        labels: {
+                          pointStyle
+                        }
+                      } = chart.legend.options;
+
+                      return data.labels.map((label, i) => {
+                        const meta = chart.getDatasetMeta(0);
+                        const style = meta.controller.getStyle(i);
+
+                        return {
+                          text: label + ' (' + data.datasets[0].data[i] + ')',
+                          fillStyle: style.backgroundColor,
+                          strokeStyle: style.borderColor,
+                          lineWidth: style.borderWidth,
+                          pointStyle: pointStyle,
+                          hidden: !chart.getDataVisibility(i),
+
+                          // Extra data used for toggling the correct item
+                          index: i
+                        };
+                      });
+                    }
+                    return [];
+                  }
+                },
+
+                onClick(e, legendItem, legend) {
+                  legend.chart.toggleDataVisibility(legendItem.index);
+                  legend.chart.update();
+                },
+              },
+              title: {
+                display: true,
+                text: 'Types of Polls',
+                font: {
+                  size: 16
+                }
+              }
+            }
+          },
+        };
+
+        new Chart(
+          document.getElementById('typeChart'),
+          pollTypeConfig
+        );
+
+        const userPollTypeGraph = {
+          labels: Object.keys(pollTypes["Users"]),
+          datasets: [{
+            backgroundColor: chartColors,
+            data: Object.values(pollTypes["Users"]),
+          }]
+        };
+
+        const userPollTypeConfig = {
+          type: 'doughnut',
+          data: userPollTypeGraph,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'right',
+                labels: {
+                  generateLabels(chart) {
+                    const data = chart.data;
+                    if (data.labels.length && data.datasets.length) {
+                      const {
+                        labels: {
+                          pointStyle
+                        }
+                      } = chart.legend.options;
+
+                      return data.labels.map((label, i) => {
+                        const meta = chart.getDatasetMeta(0);
+                        const style = meta.controller.getStyle(i);
+
+                        return {
+                          text: label + ' (' + data.datasets[0].data[i] + ' users)',
+                          fillStyle: style.backgroundColor,
+                          strokeStyle: style.borderColor,
+                          lineWidth: style.borderWidth,
+                          pointStyle: pointStyle,
+                          hidden: !chart.getDataVisibility(i),
+
+                          // Extra data used for toggling the correct item
+                          index: i
+                        };
+                      });
+                    }
+                    return [];
+                  }
+                },
+
+                onClick(e, legendItem, legend) {
+                  legend.chart.toggleDataVisibility(legendItem.index);
+                  legend.chart.update();
+                },
+              },
+              title: {
+                display: true,
+                text: 'Types of Polls by User (out of ' + pollData.totalauthors.toLocaleString('en-US') + ')',
+                font: {
+                  size: 16
+                }
+              }
+            }
+          },
+        };
+
+        new Chart(
+          document.getElementById('userTypeChart'),
+          userPollTypeConfig
+        );
+
+        const pollEachYear = []
+        const userEachYear = []
+        pollTimeline["pollsInEachYear"].forEach(i => {
+          pollEachYear.push(i.total)
+          userEachYear.push(i.userTotal)
+        })
+
+        const yearAll = {
+          labels: pollTimeline["years"],
+          datasets: [{
+              label: "Polls",
+              backgroundColor: 'rgb(255,193,7,.5)',
+              borderColor: '#ffc107',
+              data: pollEachYear,
+            },
+            {
+              label: "Users",
+              backgroundColor: addAlpha('#0d6efd', 0.5),
+              borderColor: '#0d6efd',
+              data: userEachYear,
+            }
+          ]
+        };
+
+        const yearChart = {
+          type: 'line',
+          data: yearAll,
+          options: {
+            plugins: {
+              title: {
+                display: true,
+                text: "Polls and Users in Each Year",
+                font: {
+                  size: 16
+                }
+              },
+              legend: {
+                position: 'bottom'
+              }
+            }
+          }
+        };
+
+        new Chart(
+          document.getElementById('YearChart'),
+          yearChart
+        );
+
+        var monthDataset = []
+
+        for (let index = 0; index < pollTimeline["pollsInEachYear"].length; index++) {
+
+          const adjustedMonthValues = Object.values(pollTimeline["pollsInEachYear"][index].months).map(el => el === 0 ? 'N/A' : el);
+          monthDataset.push({
+            label: pollTimeline["years"][index],
+            backgroundColor: addAlpha(chartColors[index], 0.5),
+            borderColor: chartColors[index],
+            data: adjustedMonthValues,
+          })
+
+          const adjustedMonth = Object.entries(pollTimeline["pollsInEachYear"][index].months).filter(([a, b]) => !b == 0);
+          const year = {
+            labels: adjustedMonth.map(x => x[0]),
+            datasets: [{
+              backgroundColor: chartColors.sample(),
+              data: adjustedMonth.map(x => x[1]),
+            }]
+          };
+
+          const monthChart = {
+            type: 'bar',
+            data: year,
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Polls Published in " + pollTimeline["pollsInEachYear"][index].year,
+                  font: {
+                    size: 16
+                  }
+                },
+                legend: {
+                  display: false
+                }
+              }
+            }
+          };
+
+          const sorted = Object.entries(pollTimeline["pollsInEachYear"][index].userMonths).sort((a, b) => monthNames[a[0]] - monthNames[b[0]])
+          const users = {
+            labels: sorted.map(x => x[0]),
+            datasets: [{
+              backgroundColor: chartColors.sample(),
+              data: sorted.map(x => x[1]),
+            }]
+          };
+
+          const userChart = {
+            type: 'bar',
+            data: users,
+            options: {
+              plugins: {
+                title: {
+                  display: true,
+                  text: "User Participation in " + pollTimeline["pollsInEachYear"][index].year,
+                  font: {
+                    size: 16
+                  }
+                },
+                legend: {
+                  display: false
+                }
+              }
+            }
+          };
+
+          var currentyear = pollTimeline["years"][index]
+          var isactive = ((index == 0) ? "active" : "");
+          var menuTab = '<a class="list-group-item list-group-item-action ' + isactive + '" id="list-' + currentyear + '-list" data-bs-toggle="list" href="#list-' + currentyear + '" role="tab" aria-controls="list-' + currentyear + '">' + currentyear + '</a>'
+          var contentTab = '<div class="tab-pane fade show ' + isactive + '" id="list-' + currentyear + '" role="tabpanel" aria-labelledby="list-' + currentyear + '-list">' +
+            '<div class="row justify-content-center"><div class="col-lg-6 col-10">' +
+            '<canvas id="chart' + index + '"></canvas></div>' +
+            '<div class="col-lg-6 col-10">' +
+            '<canvas id="userChart' + index + '"></canvas></div>' +
+            '</div></div>'
+          $('#list-tab').append(menuTab)
+          $('#nav-tabContent').append(contentTab)
+          new Chart(document.getElementById('chart' + index), monthChart);
+          new Chart(document.getElementById('userChart' + index), userChart);
+
+        }
+
+        const monthAll = {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: monthDataset
+        };
+
+        const monthAllChart = {
+          type: 'line',
+          data: monthAll,
+          options: {
+            plugins: {
+              title: {
+                display: true,
+                text: "Polls Published Each Month of Every Year",
+                font: {
+                  size: 16
+                }
+              },
+              legend: {
+                display: true,
+                position: 'bottom'
+              }
+            }
+          }
+        };
+
+        new Chart(
+          document.getElementById('MonthChart'),
+          monthAllChart
+        );
+        $('.data-loader.loader-two').hide()
+        $('.data-loader.loader-three').hide()
+      }, 3000);
+
+      $('.data-loader.loader-one').hide();
       $('main').show()
     });
   }
@@ -489,39 +937,4 @@ file.onreadystatechange = function () {
 
 function arrayUnique(value, index, self) {
   return self.indexOf(value) === index;
-}
-
-function timelapse(date) {
-  var currentDateTime = new Date()
-  var difference = Math.abs(currentDateTime - new Date(date))
-
-  var mm = difference;
-  var sec = Math.ceil(difference / (1000))
-  var min = Math.ceil(difference / (1000 * 60))
-  var hr = Math.round(difference / (1000 * 60 * 60))
-  var day = Math.round(difference / (1000 * 60 * 60 * 24))
-  var month = Math.round(difference / (1000 * 60 * 60 * 24 * 30))
-  var year = Math.round(difference / (1000 * 60 * 60 * 24 * 30 * 12))
-
-  difference = mm + ' milliseconds ago';
-  if (sec >= 1 && sec < 60) {
-    var text = (sec > 1) ? ' seconds ago' : ' second ago'
-    difference = sec + text;
-  } else if (min >= 1 && min < 60) {
-    var text = (min > 1) ? ' minutes ago' : ' minute ago'
-    difference = min + text;
-  } else if (hr >= 1 && hr < 24) {
-    var text = (hr > 1) ? ' hours ago' : ' hour ago'
-    difference = hr + text
-  } else if (day >= 1 && day < 30) {
-    var text = (day > 1) ? ' days ago' : ' day ago'
-    difference = day + text
-  } else if (month >= 1 && month < 12) {
-    var text = (month > 1) ? ' months ago' : ' month ago'
-    difference = month + text
-  } else if (year >= 1) {
-    var text = (year > 1) ? ' years ago' : ' year ago'
-    difference = year + text
-  }
-  return difference
 }

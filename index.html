@@ -55,7 +55,7 @@
       <div class="row my-5 justify-content-center align-items-center">
         <div class="col-lg-4 col-md-6 col-12 mb-3">
           <div class="card text-dark text-center bg-light shadow-sm">
-            <div class="card-header bg-warning fw-bold">Polls Tracked</div>
+            <div class="card-header bg-warning fw-bold">Polls</div>
             <div class="card-body">
               <h1 id="total-polls" class="card-title"></h1>
             </div>
@@ -64,7 +64,7 @@
 
         <div class="col-lg-4 col-md-6 col-12 mb-3">
           <div class="card text-dark text-center bg-light shadow-sm">
-            <div class="card-header bg-warning fw-bold">Authors Tracked</div>
+            <div class="card-header bg-warning fw-bold">Authors</div>
             <div class="card-body">
               <h1 id="total-authors" class="card-title"></h1>
             </div>
@@ -73,7 +73,7 @@
 
         <div class="col-lg-4 col-md-6 col-12 mb-3">
           <div class="card text-dark text-center bg-light shadow-sm">
-            <div class="card-header bg-warning fw-bold">Votes Gained</div>
+            <div class="card-header bg-warning fw-bold">Votes</div>
             <div class="card-body">
               <h1 id="total-votes" class="card-title"></h1>
             </div>
@@ -316,6 +316,37 @@
         <div id="lb-pagination" class="float-end text-end"></div>
       </div>
 
+
+      <h4 class="pt-5"><i class="bi bi-bar-chart"></i> Statistics</h4>
+      <hr>
+
+      <div class="data-loader loader-two">
+        <img src="img/loader.gif" width="100px">
+      </div>
+
+      <div id="charts" class="charts row justify-content-center align-items-center">
+        <div class="col-lg-4 col-md-6 col-8 mb-4 mx-auto"><canvas id="typeChart"></canvas></div>
+        <div class="col-lg-4 col-md-6 col-8 mb-4 mx-auto"><canvas id="userTypeChart"></canvas></div>
+        <div class="col-lg-6 col-md-6 col-12 mb-4"><canvas id="YearChart"></canvas></div>
+        <div class="col-lg-6 col-md-6 col-12 mb-4"><canvas id="MonthChart"></canvas></div>
+      </div>
+
+      <h4 class="pt-5"><i class="bi bi-diagram-3"></i> Timeline</h4>
+      <hr>
+
+      <div class="data-loader loader-three">
+        <img src="img/loader.gif" width="100px">
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <div class="list-group" id="list-tab" role="tablist"></div>
+        </div>
+        <div class="col-10">
+          <div class="tab-content" id="nav-tabContent"></div>
+        </div>
+      </div>
+
     </div>
   </main>
 
@@ -367,8 +398,9 @@
   <script src="assets/bootstrap.bundle.min.js"></script>
   <script src="assets/jquery-3.6.0.min.js"></script>
   <script src="assets/DataTables/datatables.min.js"></script>
-  <script src="assets/mainscript.js"></script>
+  <script src="assets/chart.js"></script>
   <script src="assets/commonscript.js"></script>
+  <script src="assets/mainscript.js"></script>
 </body>
 
 </html>
