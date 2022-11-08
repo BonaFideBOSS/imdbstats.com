@@ -649,7 +649,7 @@ file.onreadystatechange = function () {
             }
           };
 
-          var chart = '<div class="col-lg-6 col-10 mb-4"><canvas id="chart' + index + '"></canvas></div>'
+          var chart = '<div class="col-lg-6 col-12 mb-4"><canvas id="chart' + index + '"></canvas></div>'
           $('#charts').append(chart)
           new Chart(document.getElementById('chart' + index), monthChart);
         }
