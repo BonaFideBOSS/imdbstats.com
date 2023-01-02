@@ -1,10 +1,10 @@
 {
-  "totalpolls": 12280,
-  "totalvotes": 21070395,
+  "totalpolls": 12283,
+  "totalvotes": 21070756,
   "totalauthors": 479,
   "totalfeatures": 621,
-  "lastupdated": "Sunday, January 01, 2023 - 18:42 EST",
-  "rawdate": "2023-01-01 18:42:28.637460-05:00",
+  "lastupdated": "Monday, January 02, 2023 - 15:15 EST",
+  "rawdate": "2023-01-02 15:15:56.580733-05:00",
   "authors": [
     {
       "authorid": "ur50452813",
@@ -136978,7 +136978,7 @@
       "authorid": "ur34779915",
       "author": "Paok-Kilkis",
       "date": "2023/01/01",
-      "votes": 145,
+      "votes": 230,
       "featured": "No",
       "status": "Live"
     },
@@ -136989,7 +136989,7 @@
       "authorid": "ur36448190",
       "author": "Breumaster",
       "date": "2023/01/01",
-      "votes": 89,
+      "votes": 133,
       "featured": "No",
       "status": "Live"
     },
@@ -137000,7 +137000,40 @@
       "authorid": "ur75779804",
       "author": "BonaFideBOSS",
       "date": "2023/01/01",
-      "votes": 82,
+      "votes": 121,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/oHAVNFt-wsY/",
+      "title": "Best New Original Anime Series of 2022",
+      "type": "Titles",
+      "authorid": "ur0798233",
+      "author": "Gabrielfox",
+      "date": "2023/01/02",
+      "votes": 49,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/l6aGtELT8D4/",
+      "title": "Favorite Superhero IMAX Poster",
+      "type": "Images",
+      "authorid": "ur75779804",
+      "author": "BonaFideBOSS",
+      "date": "2023/01/02",
+      "votes": 85,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/fstOLaY_G5o/",
+      "title": "Frank Lupo \u2014 TV Series Creator",
+      "type": "Titles",
+      "authorid": "ur12089554",
+      "author": "mariojacobs",
+      "date": "2023/01/02",
+      "votes": 59,
       "featured": "No",
       "status": "Live"
     }
