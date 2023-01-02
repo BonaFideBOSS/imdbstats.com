@@ -482,16 +482,6 @@ file.onreadystatechange = function () {
         lbtable.search(selectedValue).draw();
       });
 
-      $('#lbsort-1').click(function () {
-        lbtable.order([2, 'desc']).draw()
-      });
-      $('#lbsort-2').click(function () {
-        lbtable.order([3, 'desc']).draw()
-      });
-      $('#lbsort-3').click(function () {
-        lbtable.order([4, 'desc']).draw()
-      });
-
       function ranking() {
         var lbrow = document.querySelectorAll('#leaderboard tbody tr')
         var pagelength = document.getElementById('lb-entries').value

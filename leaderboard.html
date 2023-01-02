@@ -1,0 +1,188 @@
+<html>
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DL544T9JQQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-DL544T9JQQ');
+  </script>
+
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>IMDbStats • Leaderboard</title>
+  <meta name="Description" content="IMDb Poll leaderboard." />
+
+  <meta property="og:title" content="IMDbStats">
+  <meta property="og:type" content="statistics" />
+  <meta property="og:description" content="IMDb Poll Leaderboard.">
+  <meta property="og:image" content="https://imdbstats.com/img/imdbpoll.png">
+  <meta property="og:url" content="https://imdbstats.com">
+
+  <link rel="shortcut icon" href="img/imdbpoll.png" type="image/x-icon">
+  <link rel="canonical" href="https://imdbstats.com/">
+
+  <link rel="stylesheet" href="assets/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/DataTables/datatables.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark">
+    <div class="container shadow-sm bg-dark">
+      <a class="navbar-brand d-flex align-items-center">
+        <img src="img/imdblogo_one.png" height="50px">
+        <div class="logo fw-bolder fs-1">Polls Leaderboard</div>
+      </a>
+      <a href="/" class="text-white" title="Back" data-bs-toggle="tooltip" data-bs-placement="bottom"><i
+          class="bi bi-box-arrow-left fs-1"></i></a>
+    </div>
+  </nav>
+
+  <div class="data-loader loader-one my-5">
+    <div>
+      <img src="img/loader.gif" width="100px">
+      <h3>Loading data...</h3>
+    </div>
+  </div>
+
+  <main>
+    <div class="container my-5">
+
+      <h4 class="d-flex align-items-center"><i class="bi bi-trophy"></i>
+        <select id="year-selector" class="form-select form-select-lg ms-2">
+          <option selected>All Time</option>
+        </select>
+        <select id="month-selector" class="form-select form-select-lg ms-2" hidden>
+          <option selected>All</option>
+        </select>
+      </h4>
+      <hr>
+      <div class="custom-filter mb-3 d-flex justify-content-between align-items-end flex-wrap gap-3">
+        <div class="d-flex flex-wrap gap-3">
+          <div>
+            <label>Entries:</label>
+            <select id="lb-entries" class="form-select">
+              <option>10</option>
+              <option>25</option>
+              <option>50</option>
+              <option selected>100</option>
+              <option value="-1">All</option>
+            </select>
+          </div>
+          <div>
+            <label>Filter:</label>
+            <select id="pollmaker" class="form-select">
+              <option value="">All</option>
+              <option value="1">Authors with the Poll Maker badge</option>
+              <option value="2">Authors without the Poll Maker badge</option>
+            </select>
+          </div>
+          <div>
+            <label>Search:</label>
+            <input id="lb-search" type="text" class="form-control" placeholder="Author name">
+          </div>
+        </div>
+
+        <div id="export-leaderboard"></div>
+      </div>
+      <div class="table-responsive">
+        <table id="leaderboard" class="stripe hover text-center">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Author</th>
+              <th>Polls</th>
+              <th>Votes</th>
+              <th>Features</th>
+              <th>Most Votes</th>
+              <th>Average</th>
+              <th>Average Votes/Day</th>
+              <th>First Poll</th>
+              <th>Last Poll</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <th colspan="2">Total</th>
+              <th id="sum-author-polls"></th>
+              <th id="sum-author-votes"></th>
+              <th id="sum-author-features"></th>
+              <th id="sum-author-maxvotes"></th>
+              <th id="sum-author-avgvotes"></th>
+              <th id="sum-author-avgvotesdaily"></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="dataTables_wrapper mt-2">
+        <div id="lb-summary" class="float-start"></div>
+        <div id="lb-pagination" class="float-end text-end"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-light mt-5 pt-5">
+    <div class="container d-flex justify-content-between">
+      <div>
+        <h5>Follow IMDb Polls</h5>
+        <a href="https://twitter.com/PollBoard" target="_blank"><i class="bi bi-twitter fs-1 me-3 text-info"></i></a>
+        <a href="https://www.facebook.com/imdbpolls/" target="_blank">
+          <i class="bi bi-facebook fs-1 me-3 text-primary"></i></a>
+        <a href="https://www.instagram.com/imdbpolls/" target="_blank">
+          <i class="bi bi-instagram fs-1 text-danger"></i></a>
+      </div>
+      <div class="text-end">
+        <h5>Join IMDb Poll Board</h5>
+        <a href="https://community-imdb.sprinklr.com/topics/imdb-poll/5f4951c662e5fc53cfeb955a" target="_blank"
+          class="btn btn-warning">Sprinklr</a>
+        <a href="https://www.facebook.com/groups/imdb.poll.board" target="_blank" class="btn btn-warning">Facebook</a>
+      </div>
+    </div>
+
+    <div class="container d-flex justify-content-between align-items-end py-5">
+      <div>
+        <h6 class="text-muted"></h6>
+        <img class="" src="img/imdbpoll.png">
+      </div>
+
+      <p class="text-center">This site is not affiliated with IMDb or Amazon in any way.
+        <br>It is created by an IMDb fan and contributor.
+      </p>
+
+      <div class="text-end">
+        <h6 class="text-muted"></h6>
+        <a href="https://www.imdb.com/" target="_blank">IMDb</a>
+        <br>
+        <a href="https://www.imdb.com/poll/" target="_blank">IMDb Polls</a>
+        <br>
+        <a href="https://community-imdb.sprinklr.com/" target="_blank">IMDb Community</a>
+        <br>
+        <a class="" href="markup" target="_blank"><i class="bi bi-pencil-square"></i> IMDb Markup</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/bootstrap.bundle.min.js"></script>
+  <script src="assets/jquery-3.6.0.min.js"></script>
+  <script src="assets/DataTables/datatables.min.js"></script>
+  <script src="assets/chart.js"></script>
+  <script src="assets/commonscript.js"></script>
+  <script src="assets/leaderboard.js"></script>
+</body>
+
+</html>

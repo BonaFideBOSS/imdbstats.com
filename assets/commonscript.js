@@ -5,6 +5,11 @@
   })
 })()
 
+function readableMonthLong(month) {
+  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  return months[parseInt(month.replace(/^0+/, '')) - 1]
+}
+
 function readableMonth(month) {
   var result;
   switch (month) {
