@@ -34,6 +34,9 @@ file.onreadystatechange = function () {
       }
     }
 
+    leaderboardYears.sort()
+    leaderboardMonths.sort()
+
     leaderboardYears.forEach(i => $('#year-selector').append('<option>' + i + '</option>'))
     leaderboardMonths.forEach(i => $('#month-selector').append('<option value="' + i + '">' + readableMonthLong(i) + '</option>'))
 
@@ -121,7 +124,6 @@ file.onreadystatechange = function () {
     $(document).ready(function () {
       var lbtable = $(leaderboard).DataTable({
         dom: 'rtipB',
-        "pageLength": 100,
         buttons: [{
           extend: 'excel',
           text: '<i class="bi bi-file-earmark-excel"></i> Export',
