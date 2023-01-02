@@ -674,7 +674,7 @@ file.onreadystatechange = function () {
       $('.data-loader.loader-one').hide()
       $('main').show()
     } else {
-      //location.href = '404'
+      location.href = '404'
     }
   }
 }
