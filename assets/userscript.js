@@ -33,7 +33,7 @@ file.onreadystatechange = function () {
 
       if (userID) {
         userID = userID.match(/(ur\d+)/)[0]
-        window.history.pushState("", "", 'user.html?id=' + userID);
+        window.history.pushState("", "", 'user?id=' + userID);
       }
 
       if (pollID && !userID) {
@@ -43,7 +43,7 @@ file.onreadystatechange = function () {
         })
         if (pollData.length != 0) {
           userID = pollData[0].authorid
-          window.history.pushState("", "", 'user.html?id=' + userID);
+          window.history.pushState("", "", 'user?id=' + userID);
         }
       }
     }
