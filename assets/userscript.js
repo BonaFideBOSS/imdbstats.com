@@ -28,11 +28,21 @@ file.onreadystatechange = function () {
 
     if (window.location.search) {
       const urlParams = new URLSearchParams(window.location.search);
-      userID = urlParams.get('id').match(/(ur\d+)/);
+      userID = urlParams.get('id')
+      pollID = urlParams.get('poll')
       if (userID) {
-        userID = userID[0]
+        window.history.pushState("", "", 'user.html?id=' + userID);
       }
-      window.history.pushState("", "", 'user?id=' + userID);
+
+      if (pollID && !userID) {
+        var pollData = mydata['polls'].filter(obj => {
+          return obj['url'].includes(pollID)
+        })
+        if (pollData.length != 0) {
+          userID = pollData[0].authorid
+          window.history.pushState("", "", 'user.html?id=' + userID);
+        }
+      }
     }
 
     var userData = mydata['polls'].filter(obj => {
