@@ -30,11 +30,14 @@ file.onreadystatechange = function () {
       const urlParams = new URLSearchParams(window.location.search);
       userID = urlParams.get('id')
       pollID = urlParams.get('poll')
+
       if (userID) {
+        userID = userID.match(/(ur\d+)/)[0]
         window.history.pushState("", "", 'user.html?id=' + userID);
       }
 
       if (pollID && !userID) {
+        pollID = pollID.split('/')[0]
         var pollData = mydata['polls'].filter(obj => {
           return obj['url'].includes(pollID)
         })
@@ -671,7 +674,7 @@ file.onreadystatechange = function () {
       $('.data-loader.loader-one').hide()
       $('main').show()
     } else {
-      location.href = '404'
+      //location.href = '404'
     }
   }
 }
