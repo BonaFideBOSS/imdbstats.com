@@ -41,30 +41,33 @@
     </div>
   </nav>
 
-  <div class="data-loader loader-one my-5">
-    <div>
-      <img src="img/loader.gif" width="100px">
-      <h3>Loading...</h3>
-    </div>
-  </div>
-
   <main>
     <div class="container my-4">
 
       <form action="javascript:void(0);">
-        <div class="input-group mb-3">
-          <span class="input-group-text">Search for</span>
-          <select id="item-filter" class="form-select py-2">
-            <option value="poll">Polls</option>
-            <option value="author">Authors</option>
-          </select>
+
+        <div class="row">
+          <div class="col-lg-10 col-md-10">
+            <input id="search-query" type="text" class="form-control form-control-lg" placeholder="Search here..."
+              required autocomplete="off">
+          </div>
+          <div class="col-lg-2 col-md-2 d-grid">
+            <button type="submit" class="btn btn-warning btn-lg">Search</button>
+          </div>
         </div>
 
-        <h5>Search Options:</h5>
-        <div class="search-filters d-flex flex-wrap mb-3 gap-3">
+        <div class="search-filters d-flex mt-3 flex-wrap gap-3">
+          <div>
+            <label>Search Type:</label>
+            <select id="search-type" class="form-select">
+              <option value="poll">Poll</option>
+              <option value="author">Author</option>
+            </select>
+          </div>
+
           <div>
             <label>Poll Type:</label>
-            <select id="type-filter" class="form-select">
+            <select id="poll-type" class="form-select">
               <option value="all">All</option>
               <option value="titles">Titles</option>
               <option value="people">People</option>
@@ -72,27 +75,39 @@
               <option value="characters">Characters</option>
             </select>
           </div>
+
+          <div>
+            <label>Featured:</label>
+            <select id="feature" class="form-select">
+              <option value="all">All</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Status:</label>
+            <select id="status" class="form-select">
+              <option value="all">All</option>
+              <option value="live">Live</option>
+              <option value="close">Closed</option>
+              <option value="inactive">Inactive</option>
+              <option value="deleted">Deleted</option>
+            </select>
+          </div>
+
           <div>
             <label>Order By:</label>
-            <select id="orderby-filter" class="form-select">
+            <select id="order" class="form-select">
               <option value="latest">Latest</option>
               <option value="oldest">Oldest</option>
               <option value="votes">Votes</option>
-              <option value="featured">Featured</option>
+              <option value="alphabetically">A-Z</option>
             </select>
           </div>
         </div>
 
-        <h5 class="search-type-title">Poll Title:</h5>
-        <div class="input-group">
-          <input type="text" class="form-control py-3 border-warning" id="poll-search" placeholder="Search here..."
-            min="1" required>
-        </div>
-
-        <button class="btn btn-warning w-100 mt-3 py-2" type="submit">Search</button>
       </form>
-
-      <div id="spellcheck"></div>
 
       <div class="data-loader search-loader my-5">
         <div>
@@ -100,7 +115,8 @@
           <h3>Searching...</h3>
         </div>
       </div>
-      <div id="poll-search-result" class="p-2 my-5"></div>
+
+      <div id="search-result" class="search-page p-2 my-5"></div>
 
     </div>
   </main>
@@ -130,7 +146,8 @@
       </div>
 
       <p class="text-center">This site is not affiliated with IMDb or Amazon in any way.
-        <br>It is created by an IMDb fan and contributor.</p>
+        <br>It is created by an IMDb fan and contributor.
+      </p>
 
       <div class="text-end">
         <h6 class="text-muted"></h6>
@@ -147,8 +164,8 @@
 
   <script src="assets/bootstrap.bundle.min.js"></script>
   <script src="assets/jquery-3.6.0.min.js"></script>
-  <script src="assets/pollsearch.js"></script>
   <script src="assets/commonscript.js"></script>
+  <script src="assets/pollsearch.js"></script>
 </body>
 
 </html>
