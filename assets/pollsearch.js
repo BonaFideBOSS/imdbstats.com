@@ -22,7 +22,7 @@ $('form').submit(function () {
     url.set('status', $('#status').val())
     url.set('order', $('#order').val())
   }
-  location.href = 'search.html?' + url
+  location.href = 'search?' + url
 })
 
 if (window.location.search) {
