@@ -120,7 +120,7 @@ file.onreadystatechange = function () {
     $('#total-votes').html(pollData.totalvotes.toLocaleString('en-US'))
 
     $('#home-search').submit(function () {
-      location.href = 'search?search_type=' + $('#search-filter').val() + '&query=' + $('#poll-search').val().split(" ")
+      location.href = 'search?search_type=' + $('#search-filter').val() + '&query=' + $('#poll-search').val()
     })
 
     $('#poll-search').on('input', function () {
