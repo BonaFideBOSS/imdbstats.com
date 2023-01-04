@@ -87,17 +87,20 @@
         </div>
       </div>
 
-      <div class="input-group">
-        <select id="search-filter" class="form-select hp">
-          <option value="poll">Polls</option>
-          <option value="author">Authors</option>
-        </select>
-        <input type="text" list="search-options" class="form-control py-3" id="poll-search" placeholder="Search"
-          autocomplete="off">
-        <a href="search" class="input-group-text text-dark bg-warning fw-bold border-0" title="Search"
-          data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="bi bi-search"></i></a>
-      </div>
-      <div id="search-result" class="shadow rounded-3 p-2"></div>
+      <form id="home-search" action="javascript:void(0);" class="mb-0">
+        <div class="input-group">
+          <select id="search-filter" class="form-select hp">
+            <option value="poll">Polls</option>
+            <option value="author">Authors</option>
+          </select>
+          <input type="text" list="search-options" class="form-control form-control-lg" id="poll-search"
+            placeholder="Search" autocomplete="off" required>
+          <button type="submit" class="btn btn-lg btn-warning" title="Search" data-bs-toggle="tooltip"
+            data-bs-placement="bottom">
+            <i class="bi bi-search"></i></button>
+        </div>
+      </form>
+      <div id="search-result" class="home shadow rounded-3 p-2"></div>
 
       <div class="mt-5 text-center">
         <h4><i class="bi bi-person"></i> Top Authors</h4>

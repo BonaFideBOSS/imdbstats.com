@@ -119,6 +119,10 @@ file.onreadystatechange = function () {
     $('#total-authors').html(pollData.totalauthors.toLocaleString('en-US'))
     $('#total-votes').html(pollData.totalvotes.toLocaleString('en-US'))
 
+    $('#home-search').submit(function () {
+      location.href = 'search?search_type=' + $('#search-filter').val() + '&query=' + $('#poll-search').val().split(" ")
+    })
+
     $('#poll-search').on('input', function () {
       var searchheader = ''
       var searchfooter = ''
@@ -139,7 +143,7 @@ file.onreadystatechange = function () {
             for (var i = 0; i < filteredlist.length; i++) {
               if (i < 5) {
                 searchheader = '<p>Top ' + (i + 1) + ' results</p>'
-                searchfooter = '<a href="search#p=' + this.value.replaceAll(' ', '+') + '">See all results</a>'
+                searchfooter = '<a href="search?search_type=poll&query=' + this.value.replaceAll(' ', '+') + '">See all results</a>'
                 var avatar = authors.find(entry => entry.authorid == filteredlist[i].authorid).avatar
                 if (avatar != "") {
                   imgurl = avatar
@@ -160,8 +164,6 @@ file.onreadystatechange = function () {
                   '<div>' +
                   '<span><h6>' + filteredlist[i].title + '</h6>' +
                   '<pre>Poll by ' + filteredlist[i].author + '</pre></span>' +
-                  '<pre class="text-end">' + polldate + ' ' + statusicon + '<br>' +
-                  filteredlist[i].votes.toLocaleString('en-US') + ' votes</pre>' +
                   '</div></a></div>'
               }
             }
@@ -177,15 +179,14 @@ file.onreadystatechange = function () {
                 authorCount = authorCount + 1
                 if (authorCount <= 5) {
                   searchheader = '<p>Top ' + authorCount + ' results</p>'
-                  searchfooter = '<a href="search#a=' + this.value.replaceAll(' ', '+') + '">See all results</a>'
+                  searchfooter = '<a href="search?search_type=author&query=' + this.value.replaceAll(' ', '+') + '">See all results</a>'
                   var avatar = authors.find(entry => entry.authorid == i).avatar
                   if (avatar != "") {
                     imgurl = avatar
                   }
                   searchoptions += '<div class="card">' +
-                    '<a class="card-body" href="user?id=' + i + '">' +
-                    '<img src="' + imgurl + '"><h6>' + element.author + '</h6>' +
-                    '<pre>Polls: ' + element.polls + ' | Votes: ' + element.votes + ' | Features: ' + element.features + '</pre></a></div>'
+                    '<a class="card-body d-flex align-items-center" href="user?id=' + i + '">' +
+                    '<img src="' + imgurl + '"><h6>' + element.author + '</h6></a></div>'
                 }
               }
             }

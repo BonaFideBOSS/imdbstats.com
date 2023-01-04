@@ -22,7 +22,7 @@ $('form').submit(function () {
     url.set('status', $('#status').val())
     url.set('order', $('#order').val())
   }
-  location.href = 'search?' + url
+  location.href = 'search.html?' + url
 })
 
 if (window.location.search) {
@@ -123,6 +123,9 @@ if (window.location.search) {
                 return b.votes - a.votes;
               });
               break;
+            case 'alphabetically':
+              polls.sort((a, b) => a.title.localeCompare(b.title))
+              break;
             default:
               polls.sort(function (a, b) {
                 return new Date(b.date) - new Date(a.date);
@@ -157,17 +160,19 @@ if (window.location.search) {
               }
 
               searchResult += '<div class="card mb-3">' +
-                '<div class="card-body">' +
-                '<div><img src="' + avatar + '"><span>' +
-                '<h5><a href="' + i.url + '">' + i.title + '</a></h5>' +
-                '<p><a href="user?id=' + i.authorid + '">' + i.author + '</a><span class="text-muted">' + publishdate + '</span></p>' +
-                '<p class="text-muted">' + polldate + i.type + ' Poll<i class="bi bi-dot"></i>' + i.status + '<i class="bi bi-dot"></i>' + i.votes.toLocaleString() + ' votes' + featured + '</p>' +
-                '</span></div>' + statusicon + '</div></div><hr>'
+                '<div class="card-body row">' +
+                '<div class="col-1"><img src="' + avatar + '"></div>' +
+                '<div class="col-10">' +
+                '<h5 class="card-title"><a href="' + i.url + '">' + i.title + '</a></h5>' +
+                '<p class="card-text"><a href="user?id=' + i.authorid + '">' + i.author + '</a><span class="text-muted">' + publishdate + '</span></p>' +
+                '<p class="card-text text-muted">' + polldate + i.type + ' Poll<i class="bi bi-dot"></i>' + i.status + '<i class="bi bi-dot"></i>' + i.votes.toLocaleString() + ' votes' + featured + '</p>' +
+                '</div>' +
+                '<div class="col-1 text-end">' + statusicon + '</div></div></div><hr>'
             });
           } else {
             searchResult += '<p class="fs-5 d-grid gap-2 fw-bold text-center py-5"><i class="fs-1 bi bi-emoji-frown"></i> No polls found!</p><hr>'
           }
-          searchResult += 'Showing ' + polls.length + ' out of ' + polls.length + ' results.'
+          searchResult += '<p>Showing ' + polls.length + ' out of ' + polls.length + ' results.</p>'
         }
 
         if (searchType == 'author') {

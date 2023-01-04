@@ -94,7 +94,7 @@ input:focus {
   margin-right: 1rem;
 }
 
-#search-result .card-body div {
+#search-result.home .card-body div {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -172,7 +172,7 @@ input::-webkit-calendar-picker-indicator {
   margin-right: 1rem;
 }
 
-#search-result.search-page .card .card-body {
+/* #search-result.search-page .card .card-body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -180,7 +180,7 @@ input::-webkit-calendar-picker-indicator {
 
 #search-result.search-page .card .card-body div {
   display: flex;
-}
+} */
 
 #search-result.search-page .card .text-muted {
   font-size: .875em;

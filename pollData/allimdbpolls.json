@@ -1,10 +1,10 @@
 {
-  "totalpolls": 12286,
-  "totalvotes": 21071230,
+  "totalpolls": 12289,
+  "totalvotes": 21071499,
   "totalauthors": 479,
   "totalfeatures": 621,
-  "lastupdated": "Tuesday, January 03, 2023 - 16:15 EST",
-  "rawdate": "2023-01-03 16:15:17.693110-05:00",
+  "lastupdated": "Wednesday, January 04, 2023 - 07:23 EST",
+  "rawdate": "2023-01-04 07:23:55.877037-05:00",
   "authors": [
     {
       "authorid": "ur50452813",
@@ -136978,7 +136978,7 @@
       "authorid": "ur34779915",
       "author": "Paok-Kilkis",
       "date": "2023/01/01",
-      "votes": 298,
+      "votes": 321,
       "featured": "No",
       "status": "Live"
     },
@@ -136989,7 +136989,7 @@
       "authorid": "ur36448190",
       "author": "Breumaster",
       "date": "2023/01/01",
-      "votes": 162,
+      "votes": 166,
       "featured": "No",
       "status": "Live"
     },
@@ -137000,7 +137000,7 @@
       "authorid": "ur75779804",
       "author": "BonaFideBOSS",
       "date": "2023/01/01",
-      "votes": 149,
+      "votes": 152,
       "featured": "No",
       "status": "Live"
     },
@@ -137011,7 +137011,7 @@
       "authorid": "ur0798233",
       "author": "Gabrielfox",
       "date": "2023/01/02",
-      "votes": 74,
+      "votes": 77,
       "featured": "No",
       "status": "Live"
     },
@@ -137022,7 +137022,7 @@
       "authorid": "ur75779804",
       "author": "BonaFideBOSS",
       "date": "2023/01/02",
-      "votes": 129,
+      "votes": 136,
       "featured": "No",
       "status": "Live"
     },
@@ -137033,7 +137033,7 @@
       "authorid": "ur12089554",
       "author": "mariojacobs",
       "date": "2023/01/02",
-      "votes": 83,
+      "votes": 88,
       "featured": "No",
       "status": "Live"
     },
@@ -137044,7 +137044,7 @@
       "authorid": "ur34445091",
       "author": "Eagles90",
       "date": "2023/01/03",
-      "votes": 87,
+      "votes": 127,
       "featured": "No",
       "status": "Live"
     },
@@ -137055,7 +137055,7 @@
       "authorid": "ur57704188",
       "author": "brijeshmarand",
       "date": "2023/01/03",
-      "votes": 92,
+      "votes": 128,
       "featured": "No",
       "status": "Live"
     },
@@ -137066,7 +137066,40 @@
       "authorid": "ur12089554",
       "author": "mariojacobs",
       "date": "2023/01/03",
-      "votes": 77,
+      "votes": 106,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/7FDvdfwzRos/",
+      "title": "R.I.P. Pel\u00e9",
+      "type": "Images",
+      "authorid": "ur34779915",
+      "author": "Paok-Kilkis",
+      "date": "2023/01/04",
+      "votes": 33,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/kQvTCU_M2OI/",
+      "title": "Highest Paid Actresses of 2022",
+      "type": "People",
+      "authorid": "ur0798233",
+      "author": "Gabrielfox",
+      "date": "2023/01/04",
+      "votes": 49,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/kenDu5H8yDE/",
+      "title": "Best TV Episode of 2022",
+      "type": "Titles",
+      "authorid": "ur46158148",
+      "author": "penchofifteenpolls",
+      "date": "2023/01/04",
+      "votes": 37,
       "featured": "No",
       "status": "Live"
     }
