@@ -159,12 +159,11 @@ file.onreadystatechange = function () {
                   polldate = filteredlist[i].date
                 }
                 searchoptions += '<div class="card">' +
-                  '<a class="card-body" href="' + filteredlist[i].url + '" target="_blank">' +
-                  '<img src="' + imgurl + '">' +
-                  '<div>' +
+                  '<a class="card-body d-flex" href="' + filteredlist[i].url + '" target="_blank">' +
+                  '<img class="me-3" src="' + imgurl + '">' +
                   '<span><h6>' + filteredlist[i].title + '</h6>' +
                   '<pre>Poll by ' + filteredlist[i].author + '</pre></span>' +
-                  '</div></a></div>'
+                  '</a></div>'
               }
             }
           } else {
@@ -186,7 +185,7 @@ file.onreadystatechange = function () {
                   }
                   searchoptions += '<div class="card">' +
                     '<a class="card-body d-flex align-items-center" href="user?id=' + i + '">' +
-                    '<img src="' + imgurl + '"><h6>' + element.author + '</h6></a></div>'
+                    '<img class="me-3" src="' + imgurl + '"><h6>' + element.author + '</h6></a></div>'
                 }
               }
             }

@@ -161,13 +161,15 @@ if (window.location.search) {
 
               searchResult += '<div class="card mb-3">' +
                 '<div class="card-body row">' +
-                '<div class="col-1"><img src="' + avatar + '"></div>' +
-                '<div class="col-10">' +
+                '<div class="col-11 d-flex">' +
+                '<img class="me-3" src="' + avatar + '">' +
+                '<span>' +
                 '<h5 class="card-title"><a href="' + i.url + '">' + i.title + '</a></h5>' +
                 '<p class="card-text"><a href="user?id=' + i.authorid + '">' + i.author + '</a><span class="text-muted">' + publishdate + '</span></p>' +
                 '<p class="card-text text-muted">' + polldate + i.type + ' Poll<i class="bi bi-dot"></i>' + i.status + '<i class="bi bi-dot"></i>' + i.votes.toLocaleString() + ' votes' + featured + '</p>' +
-                '</div>' +
-                '<div class="col-1 text-end">' + statusicon + '</div></div></div><hr>'
+                '</span></div>' +
+                '<div class="col-1 text-end">' + statusicon + '</div>' +
+                '</div></div><hr>'
             });
           } else {
             searchResult += '<p class="fs-5 d-grid gap-2 fw-bold text-center py-5"><i class="fs-1 bi bi-emoji-frown"></i> No polls found!</p><hr>'
@@ -186,10 +188,13 @@ if (window.location.search) {
           if (authorData.length != 0) {
             authorData.forEach(i => {
               searchResult += '<div class="card mb-3">' +
-                '<div class="card-body"><div>' +
-                '<img src="' + i.avatar + '"><span>' +
-                '<span><h5><a href="user?id=' + i.authorid + '">' + i.author + '</a></h5>' +
-                '<p class="text-secondary">Polls: ' + i.polls + '<i class="bi bi-dot"></i>Votes: ' + i.votes.toLocaleString() + '<i class="bi bi-dot"></i>Features: ' + i.features + '</p></span>' +
+                '<div class="card-body">' +
+                '<div class="d-flex">' +
+                '<img class="me-3" src="' + i.avatar + '">' +
+                '<span>' +
+                '<h5><a href="user?id=' + i.authorid + '">' + i.author + '</a></h5>' +
+                '<p class="text-secondary">Polls: ' + i.polls + '<i class="bi bi-dot"></i>Votes: ' + i.votes.toLocaleString() + '<i class="bi bi-dot"></i>Features: ' + i.features + '</p>' +
+                '</span>' +
                 '</div></div></div><hr>'
             })
           } else {
