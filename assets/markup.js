@@ -25,68 +25,99 @@ $(window).on('load', function () {
 
 function selection() {
   if (document.getSelection()) {
-    return document.getSelection().toString();
+    var selection = document.getSelection()
+    var startingPoint = userinput.selectionStart;
+    return {
+      text: selection.toString(),
+      index: startingPoint,
+      textEnd: userinput.selectionEnd
+    }
   }
+}
+
+String.prototype.myReplace = function (search, replace, from) {
+  if (this.length > from) {
+    return this.slice(0, from) + this.slice(from).replace(search, replace);
+  }
+  return this;
 }
 
 $('.markup-btns .btn').click(function () {
   var id = $(this).prop('id')
   var selectedText = selection()
+  var selectedTextIndex = selectedText.index
+  var textEnd = selectedText.textEnd
+  selectedText = selectedText.text
+
   text = userinput.value
   switch (id) {
     case 'markup-bold':
       if (selectedText != "") {
-        userinput.value = text.replace(selectedText, '[b]' + selectedText + '[/b]')
+        userinput.value = text.myReplace(selectedText, '[b]' + selectedText + '[/b]', selectedTextIndex)
+        textEnd += 7
       } else {
-        userinput.value = userinput.value + '[b][/b]'
+        userinput.value = text + '[b][/b]'
+        textEnd = text.length + 3
       }
       break;
 
     case 'markup-italic':
       if (selectedText != "") {
-        userinput.value = text.replace(selectedText, '[i]' + selectedText + '[/i]')
+        userinput.value = text.myReplace(selectedText, '[i]' + selectedText + '[/i]', selectedTextIndex)
+        textEnd += 7
       } else {
-        userinput.value = userinput.value + '[i][/i]'
+        userinput.value = text + '[i][/i]'
+        textEnd = text.length + 3
       }
       break;
 
     case 'markup-underline':
       if (selectedText != "") {
-        userinput.value = text.replace(selectedText, '[u]' + selectedText + '[/u]')
+        userinput.value = text.myReplace(selectedText, '[u]' + selectedText + '[/u]', selectedTextIndex)
+        textEnd += 7
       } else {
-        userinput.value = userinput.value + '[u][/u]'
+        userinput.value = text + '[u][/u]'
+        textEnd = text.length + 3
       }
       break;
 
     case 'markup-link':
       if (selectedText != "") {
-        userinput.value = text.replace(selectedText, '[link=]' + selectedText + '[/link]')
+        userinput.value = text.myReplace(selectedText, '[link=]' + selectedText + '[/link]', selectedTextIndex)
+        textEnd += 14
       } else {
-        userinput.value = userinput.value + '[link=][/link]'
+        userinput.value = text + '[link=][/link]'
+        textEnd = text.length + 7
       }
       break;
 
     case 'markup-list':
       if (selectedText != "") {
-        userinput.value = text.replace(selectedText, '\n- ' + selectedText)
+        userinput.value = text.myReplace(selectedText, '\n- ' + selectedText, selectedTextIndex)
+        textEnd += 4
       } else {
-        userinput.value = userinput.value + '\n- '
+        userinput.value = text + '\n- '
+        textEnd = text.length + 4
       }
       break;
 
     case 'markup-quote':
       if (selectedText != "") {
-        userinput.value = text.replace(selectedText, '[quote]' + selectedText + '[/quote]')
+        userinput.value = text.myReplace(selectedText, '[quote]' + selectedText + '[/quote]', selectedTextIndex)
+        textEnd += 15
       } else {
         userinput.value = userinput.value + '[quote][/quote]'
+        textEnd = text.length + 7
       }
       break;
 
     case 'markup-spoiler':
       if (selectedText != "") {
-        userinput.value = text.replace(selectedText, '[spoiler]' + selectedText + '[/spoiler]')
+        userinput.value = text.myReplace(selectedText, '[spoiler]' + selectedText + '[/spoiler]', selectedTextIndex)
+        textEnd += 19
       } else {
         userinput.value = userinput.value + '[spoiler][/spoiler]'
+        textEnd = text.length + 9
       }
       break;
 
@@ -95,6 +126,7 @@ $('.markup-btns .btn').click(function () {
   }
   markdown()
   $(userinput).focus()
+  userinput.selectionStart = userinput.selectionEnd = textEnd
 })
 
 $('#reset-btn').on('click', function () {
