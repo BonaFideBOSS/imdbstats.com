@@ -19,8 +19,82 @@ var userinput = document.getElementById('userinput')
 var livepreview = document.getElementById('livepreview')
 
 $(window).on('load', function () {
-  userinput.value = 'Type [b]here[/b]...'
-  livepreview.innerHTML = 'Type <b>here</b>...'
+  userinput.value = 'Type here...\n\nThis is [b]bold[/b]\nThis is [i]italic[/i]\nThis is [u]underlined[/u]\nThis is a [link=https://imdb.com]link[/link]\n\n[url][u][i][b]This is mixed[/b][/i][/u][/url]'
+  markdown()
+})
+
+function selection() {
+  if (document.getSelection()) {
+    return document.getSelection().toString();
+  }
+}
+
+$('.markup-btns .btn').click(function () {
+  var id = $(this).prop('id')
+  var selectedText = selection()
+  text = userinput.value
+  switch (id) {
+    case 'markup-bold':
+      if (selectedText != "") {
+        userinput.value = text.replace(selectedText, '[b]' + selectedText + '[/b]')
+      } else {
+        userinput.value = userinput.value + '[b][/b]'
+      }
+      break;
+
+    case 'markup-italic':
+      if (selectedText != "") {
+        userinput.value = text.replace(selectedText, '[i]' + selectedText + '[/i]')
+      } else {
+        userinput.value = userinput.value + '[i][/i]'
+      }
+      break;
+
+    case 'markup-underline':
+      if (selectedText != "") {
+        userinput.value = text.replace(selectedText, '[u]' + selectedText + '[/u]')
+      } else {
+        userinput.value = userinput.value + '[u][/u]'
+      }
+      break;
+
+    case 'markup-link':
+      if (selectedText != "") {
+        userinput.value = text.replace(selectedText, '[link=]' + selectedText + '[/link]')
+      } else {
+        userinput.value = userinput.value + '[link=][/link]'
+      }
+      break;
+
+    case 'markup-list':
+      if (selectedText != "") {
+        userinput.value = text.replace(selectedText, '\n- ' + selectedText)
+      } else {
+        userinput.value = userinput.value + '\n- '
+      }
+      break;
+
+    case 'markup-quote':
+      if (selectedText != "") {
+        userinput.value = text.replace(selectedText, '[quote]' + selectedText + '[/quote]')
+      } else {
+        userinput.value = userinput.value + '[quote][/quote]'
+      }
+      break;
+
+    case 'markup-spoiler':
+      if (selectedText != "") {
+        userinput.value = text.replace(selectedText, '[spoiler]' + selectedText + '[/spoiler]')
+      } else {
+        userinput.value = userinput.value + '[spoiler][/spoiler]'
+      }
+      break;
+
+    default:
+      break;
+  }
+  markdown()
+  $(userinput).focus()
 })
 
 $('#reset-btn').on('click', function () {
@@ -61,18 +135,11 @@ function markdown() {
   marked = marked.replaceAll('[/purple]', '</font>')
   marked = marked.replaceAll('[spoiler]', '<span class="spoiler"><span>')
   marked = marked.replaceAll('[/spoiler]', '</span></span>')
-
-
-  urls = marked.match(/(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/igm)
-  marked = marked.replaceAll('[url]', '<a class="markuplink">')
-  marked = marked.replaceAll(/\[\/url\]|\[\/link\]/g, '</a>')
-  marked = marked.replaceAll(/\[url=.*\]/g, '<a class="markuplink">')
-  marked = marked.replaceAll(/\[link=.*\]/g, '<a class="markuplink">')
-
-  var markuplink = document.querySelectorAll('.markuplink')
-  for (var i = 0; i < markuplink.length; i++) {
-    markuplink[i].setAttribute('href', urls[i])
-  }
+  marked = marked.replaceAll(/\[link=(.*?)\]/g, '<a class="link">')
+  marked = marked.replaceAll('[/link]', '</a>')
+  marked = marked.replaceAll(/\[url=(.*?)\]/g, '<a class="link">')
+  marked = marked.replaceAll('[url]', '<a class="link">')
+  marked = marked.replaceAll('[/url]', '</a>')
 
   livepreview.innerHTML = marked
 }

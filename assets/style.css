@@ -243,10 +243,22 @@ footer p {
 }
 
 #imdb-markup textarea {
+  height: 250px;
   box-shadow: none;
-  height: 100%;
+  resize: none;
 }
 
 #imdb-markup #livepreview {
   height: 100%;
+  max-height: 280px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#imdb-markup .markup-btns {
+  bottom: 0;
+}
+
+#imdb-markup .markup-btns .btn {
+  border: none;
 }
