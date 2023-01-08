@@ -249,8 +249,7 @@ footer p {
 }
 
 #imdb-markup #livepreview {
-  height: 100%;
-  max-height: 280px;
+  height: 280px;
   overflow: hidden;
   overflow-y: scroll;
 }

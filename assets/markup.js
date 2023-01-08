@@ -48,16 +48,16 @@ $('.markup-btns .btn').click(function () {
   var selectedTextIndex = selectedText.index
   var textEnd = selectedText.textEnd
   selectedText = selectedText.text
-
   text = userinput.value
+
   switch (id) {
     case 'markup-bold':
       if (selectedText != "") {
         userinput.value = text.myReplace(selectedText, '[b]' + selectedText + '[/b]', selectedTextIndex)
         textEnd += 7
       } else {
-        userinput.value = text + '[b][/b]'
-        textEnd = text.length + 3
+        userinput.value = text.slice(0, textEnd) + '[b][/b]' + text.slice(textEnd)
+        textEnd = textEnd + 3
       }
       break;
 
@@ -66,8 +66,8 @@ $('.markup-btns .btn').click(function () {
         userinput.value = text.myReplace(selectedText, '[i]' + selectedText + '[/i]', selectedTextIndex)
         textEnd += 7
       } else {
-        userinput.value = text + '[i][/i]'
-        textEnd = text.length + 3
+        userinput.value = text.slice(0, textEnd) + '[i][/i]' + text.slice(textEnd)
+        textEnd = textEnd + 3
       }
       break;
 
@@ -76,8 +76,8 @@ $('.markup-btns .btn').click(function () {
         userinput.value = text.myReplace(selectedText, '[u]' + selectedText + '[/u]', selectedTextIndex)
         textEnd += 7
       } else {
-        userinput.value = text + '[u][/u]'
-        textEnd = text.length + 3
+        userinput.value = text.slice(0, textEnd) + '[u][/u]' + text.slice(textEnd)
+        textEnd = textEnd + 3
       }
       break;
 
@@ -86,18 +86,25 @@ $('.markup-btns .btn').click(function () {
         userinput.value = text.myReplace(selectedText, '[link=]' + selectedText + '[/link]', selectedTextIndex)
         textEnd += 14
       } else {
-        userinput.value = text + '[link=][/link]'
-        textEnd = text.length + 7
+        userinput.value = text.slice(0, textEnd) + '[link=][/link]' + text.slice(textEnd)
+        textEnd = textEnd + 7
       }
       break;
 
     case 'markup-list':
+      var lineBreak = '\n'
+      if (selectedTextIndex != 0) {
+        if (text[selectedTextIndex - 1].charCodeAt(0) == 10) {
+          lineBreak = ''
+        }
+      }
+
       if (selectedText != "") {
-        userinput.value = text.myReplace(selectedText, '\n- ' + selectedText, selectedTextIndex)
-        textEnd += 4
+        userinput.value = text.myReplace(selectedText, lineBreak + '- ' + selectedText, selectedTextIndex)
+        textEnd += (lineBreak != '') ? 3 : 2
       } else {
-        userinput.value = text + '\n- '
-        textEnd = text.length + 4
+        userinput.value = text.slice(0, textEnd) + lineBreak + '- ' + text.slice(textEnd)
+        textEnd += (lineBreak != '') ? 3 : 2
       }
       break;
 
@@ -106,8 +113,8 @@ $('.markup-btns .btn').click(function () {
         userinput.value = text.myReplace(selectedText, '[quote]' + selectedText + '[/quote]', selectedTextIndex)
         textEnd += 15
       } else {
-        userinput.value = userinput.value + '[quote][/quote]'
-        textEnd = text.length + 7
+        userinput.value = text.slice(0, textEnd) + '[quote][/quote]' + text.slice(textEnd)
+        textEnd = textEnd + 7
       }
       break;
 
@@ -116,8 +123,8 @@ $('.markup-btns .btn').click(function () {
         userinput.value = text.myReplace(selectedText, '[spoiler]' + selectedText + '[/spoiler]', selectedTextIndex)
         textEnd += 19
       } else {
-        userinput.value = userinput.value + '[spoiler][/spoiler]'
-        textEnd = text.length + 9
+        userinput.value = text.slice(0, textEnd) + '[spoiler][/spoiler]' + text.slice(textEnd)
+        textEnd = textEnd + 9
       }
       break;
 
