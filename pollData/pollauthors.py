@@ -27,28 +27,29 @@ failedAuthors = []
 
 for i in data["authors"]:
     authorId = i["authorid"]
-    if i["avatar"] == "":
-        try:
-            profileURL = "https://www.imdb.com/user/" + authorId
+    if i["avatar"] != "":
+        continue
+    try:
+        profileURL = "https://www.imdb.com/user/" + authorId
 
-            myheader = {"User-Agent": "Mozilla/5.0"}
+        myheader = {"User-Agent": "Mozilla/5.0"}
 
-            connection = requests.get(profileURL, headers=myheader)
-            scrape = BeautifulSoup(connection.text, "html.parser")
-            connection.close()
+        connection = requests.get(profileURL, headers=myheader)
+        scrape = BeautifulSoup(connection.text, "html.parser")
+        connection.close()
 
-            imagelink = scrape.select_one("#avatar")
-            if imagelink:
-                i["avatar"] = imagelink["src"]
+        imagelink = scrape.select_one("#avatar")
+        if imagelink:
+            i["avatar"] = imagelink["src"]
 
-            currentAuthor = currentAuthor + 1
-            print("-----> Progress: " + str(currentAuthor))
-        except:
-            failedAuthors.append(authorId)
-            currentAuthor = currentAuthor + 1
-            errors = errors + 1
-            print("Error occurred at: " + str(currentAuthor))
-            continue
+        currentAuthor = currentAuthor + 1
+        print("-----> Progress: " + str(currentAuthor))
+    except:
+        failedAuthors.append(authorId)
+        currentAuthor = currentAuthor + 1
+        errors = errors + 1
+        print("Error occurred at: " + str(currentAuthor))
+        continue
 
 # ===== Save =====
 file = open("allimdbpolls.json", "w")
