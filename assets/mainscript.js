@@ -339,7 +339,7 @@ file.onreadystatechange = function () {
         var currentpage = $('#allimdbpolls_paginate .paginate_button.current').html().replace(',', '')
         var startingrank = pagelength * currentpage - pagelength
         for (var i = 0; i < lbrow.length; i++) {
-          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
             startingrank = startingrank + 1
             lbrow[i].querySelectorAll('td')[0].innerHTML = startingrank
           }
@@ -356,7 +356,7 @@ file.onreadystatechange = function () {
         var startingrank = pagelength * currentpage - pagelength
         startingrank = pollrowtotal - startingrank
         for (var i = 0; i < lbrow.length; i++) {
-          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
             lbrow[i].querySelectorAll('td')[0].innerHTML = startingrank--
           }
         }
@@ -397,7 +397,7 @@ file.onreadystatechange = function () {
         var sumvotes = 0;
         var sumhp = 0;
         for (var i = 0; i < row.length; i++) {
-          if (row[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+          if (row[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
             sumauthors.push(row[i].querySelectorAll('td')[2].textContent)
             sumvotes += parseInt(row[i].querySelectorAll('td')[4].textContent.replace(',', ''))
             if ((row[i].querySelectorAll('td')[6].innerHTML).toLowerCase() == "yes") {
@@ -488,7 +488,7 @@ file.onreadystatechange = function () {
         var currentpage = $('#leaderboard_paginate .paginate_button.current').html().replace(',', '')
         var startingrank = pagelength * currentpage - pagelength
         for (var i = 0; i < lbrow.length; i++) {
-          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
             startingrank = startingrank + 1
             lbrow[i].querySelectorAll('td')[0].innerHTML = startingrank
           }
@@ -505,7 +505,7 @@ file.onreadystatechange = function () {
         var startingrank = pagelength * currentpage - pagelength
         startingrank = lbrowtotal - startingrank
         for (var i = 0; i < lbrow.length; i++) {
-          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
             lbrow[i].querySelectorAll('td')[0].innerHTML = startingrank--
           }
         }
@@ -520,7 +520,7 @@ file.onreadystatechange = function () {
         var sumauthoravg = 0;
         var sumauthoravgday = 0
         for (var i = 0; i < row.length; i++) {
-          if (row[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+          if (row[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
             sumauthorpolls += parseInt(row[i].querySelectorAll('td')[2].textContent.replace(',', ''))
             sumauthorvotes += parseInt(row[i].querySelectorAll('td')[3].textContent.replace(',', ''))
             sumauthorhp += parseInt(row[i].querySelectorAll('td')[4].textContent.replace(',', ''))
@@ -672,7 +672,7 @@ file.onreadystatechange = function () {
               },
               title: {
                 display: true,
-                text: 'Types of Polls',
+                text: 'No. of Polls of Each Type',
                 font: {
                   size: 16
                 }
@@ -717,7 +717,7 @@ file.onreadystatechange = function () {
                         const style = meta.controller.getStyle(i);
 
                         return {
-                          text: label + ' (' + data.datasets[0].data[i] + ' users)',
+                          text: label + ' (' + data.datasets[0].data[i] + ')',
                           fillStyle: style.backgroundColor,
                           strokeStyle: style.borderColor,
                           lineWidth: style.borderWidth,
@@ -740,7 +740,7 @@ file.onreadystatechange = function () {
               },
               title: {
                 display: true,
-                text: 'Types of Polls by User (out of ' + pollData.totalauthors.toLocaleString('en-US') + ')',
+                text: 'No. of Authors of Each Type (out of ' + pollData.totalauthors.toLocaleString('en-US') + ')',
                 font: {
                   size: 16
                 }
@@ -764,17 +764,17 @@ file.onreadystatechange = function () {
         const yearAll = {
           labels: pollTimeline["years"],
           datasets: [{
-              label: "Polls",
-              backgroundColor: 'rgb(255,193,7,.5)',
-              borderColor: '#ffc107',
-              data: pollEachYear,
-            },
-            {
-              label: "Users",
-              backgroundColor: addAlpha('#0d6efd', 0.5),
-              borderColor: '#0d6efd',
-              data: userEachYear,
-            }
+            label: "Polls",
+            backgroundColor: 'rgb(255,193,7,.5)',
+            borderColor: '#ffc107',
+            data: pollEachYear,
+          },
+          {
+            label: "Users",
+            backgroundColor: addAlpha('#0d6efd', 0.5),
+            borderColor: '#0d6efd',
+            data: userEachYear,
+          }
           ]
         };
 
