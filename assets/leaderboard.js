@@ -135,7 +135,7 @@ file.onreadystatechange = function () {
           [3, "desc"]
         ],
         "columnDefs": [{
-          "targets": [0, 1],
+          "targets": [0],
           "orderable": false
         }]
       });
@@ -173,7 +173,7 @@ file.onreadystatechange = function () {
         var currentpage = $('#leaderboard_paginate .paginate_button.current').html().replace(',', '')
         var startingrank = pagelength * currentpage - pagelength
         for (var i = 0; i < lbrow.length; i++) {
-          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
             startingrank = startingrank + 1
             lbrow[i].querySelectorAll('td')[0].innerHTML = startingrank
           }
@@ -190,7 +190,7 @@ file.onreadystatechange = function () {
         var startingrank = pagelength * currentpage - pagelength
         startingrank = lbrowtotal - startingrank
         for (var i = 0; i < lbrow.length; i++) {
-          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+          if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
             lbrow[i].querySelectorAll('td')[0].innerHTML = startingrank--
           }
         }
@@ -205,7 +205,7 @@ file.onreadystatechange = function () {
         var sumauthoravg = 0;
         var sumauthoravgday = 0
         for (var i = 0; i < row.length; i++) {
-          if (row[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+          if (row[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
             sumauthorpolls += parseInt(row[i].querySelectorAll('td')[2].textContent.replace(',', ''))
             sumauthorvotes += parseInt(row[i].querySelectorAll('td')[3].textContent.replace(',', ''))
             sumauthorhp += parseInt(row[i].querySelectorAll('td')[4].textContent.replace(',', ''))
@@ -224,29 +224,33 @@ file.onreadystatechange = function () {
 
       ranking();
       leaderboardTotal();
+      function ranking_order() {
+        var reverse_cols = ["Author", "First Poll"]
+        if ($('#leaderboard thead .sorting').hasClass('sorting_desc')) {
+          if (reverse_cols.includes($('#leaderboard thead .sorting.sorting_desc').html())) {
+            rankingbottom();
+          } else {
+            ranking()
+          }
+        } else {
+          if (reverse_cols.includes($('#leaderboard thead .sorting.sorting_asc').html())) {
+            ranking()
+          } else {
+            rankingbottom()
+          }
+        }
+      }
       $('.custom-filter select').on('change', function () {
         leaderboardTotal();
-        if ($('#leaderboard thead .sorting').hasClass('sorting_desc')) {
-          ranking();
-        } else {
-          rankingbottom();
-        }
+        ranking_order()
       })
       $('.custom-filter input').on('input', function () {
         leaderboardTotal();
-        if ($('#leaderboard thead .sorting').hasClass('sorting_desc')) {
-          ranking();
-        } else {
-          rankingbottom();
-        }
+        ranking_order()
       })
       $('#leaderboard thead .sorting,#leaderboard_paginate').on('click', function () {
         leaderboardTotal();
-        if ($('#leaderboard thead .sorting').hasClass('sorting_desc')) {
-          ranking();
-        } else {
-          rankingbottom();
-        }
+        ranking_order()
       })
 
       $('.data-loader.loader-one').hide();

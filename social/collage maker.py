@@ -1,5 +1,6 @@
 from ast import If
 import os
+import re
 import glob
 from textwrap import fill
 from turtle import width
@@ -7,6 +8,23 @@ import requests
 from bs4 import BeautifulSoup
 import urllib.request as imgreq
 from PIL import Image, ImageFont, ImageDraw, ImageFilter
+
+
+def clean_string(string):
+    # Remove year
+    string = re.sub(r"\s*\(\d{4}\)$", "", string)
+    # get name only
+    string = string.split(" in ",1)[0]
+    # Remove single quotes
+    string = string.replace("'", "")
+    # Remove hyphens
+    string = string.replace("-", "")
+    # Remove colons
+    string = string.replace(":", "")
+    # Remove spaces
+    string = string.replace(" ", "")
+    return string
+
 
 url = input("Poll URL: ")
 if "?" in url:
@@ -21,6 +39,7 @@ layout.close()
 
 collages = len(glob.glob1(".", "collage*.jpg"))
 filename = "collage_" + str(collages) + ".jpg"
+descFile = "collage_" + str(collages) + ".txt"
 
 font_size = 50
 title_font = ImageFont.truetype("archivo-condensed-medium.ttf", font_size)
@@ -34,6 +53,24 @@ connection.close()
 
 posters = scrape.select(".answers .answer .vote img")
 pollTitle = scrape.title.text[6:-14]
+options = scrape.select("h3.answer-text")
+options = [f"#{clean_string(i.text)}" for i in options[:16]]
+description = f"""#IMDb #Poll: {pollTitle}
+
+Link: {url} (more in bio)
+
+.
+.
+.
+.
+.
+
+#movies #films #shows #series #games #videogames #tvshows #tvseries #entertainment #actors #actress #celebrity
+{" ".join(map(str,options))}
+"""
+
+with open(descFile, "w") as file:
+    file.write(description)
 
 count = 0
 for i in posters:

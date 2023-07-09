@@ -90,6 +90,9 @@ file.onreadystatechange = function () {
 
       $('#cardtotalpolls').html(totalPolls)
       $('#cardtotalvotes').html(totalVotes.toLocaleString('en-US'))
+      if (totalVotes >= 100000) {
+        $('.poll-maker').removeClass('visually-hidden')
+      }
       $('#cardtotalhp').html(totalHomepagePolls)
       $('#avgvotes').html(Math.round(totalVotes / totalPolls).toLocaleString('en-US'))
 
@@ -253,7 +256,7 @@ file.onreadystatechange = function () {
           var currentpage = $('#imdbpolls_paginate .paginate_button.current').html().replace(',', '')
           var startingrank = pagelength * currentpage - pagelength
           for (var i = 0; i < lbrow.length; i++) {
-            if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+            if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
               startingrank = startingrank + 1
               lbrow[i].querySelectorAll('td')[0].innerHTML = startingrank
             }
@@ -270,7 +273,7 @@ file.onreadystatechange = function () {
           var startingrank = pagelength * currentpage - pagelength
           startingrank = pollrowtotal - startingrank
           for (var i = 0; i < lbrow.length; i++) {
-            if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+            if (lbrow[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
               lbrow[i].querySelectorAll('td')[0].innerHTML = startingrank--
             }
           }
@@ -306,30 +309,34 @@ file.onreadystatechange = function () {
         });
 
         tableTotal()
-        pollranking()
+        pollranking();
+        function sorting_order() {
+          var reverse_cols = ["Votes", "Featured"]
+          if ($('#imdbpolls thead .sorting').hasClass('sorting_desc')) {
+            if (reverse_cols.includes($('#imdbpolls thead .sorting.sorting_desc').html())) {
+              pollranking();
+            } else {
+              pollrankingbottom();
+            }
+          } else {
+            if (reverse_cols.includes($('#imdbpolls thead .sorting.sorting_asc').html())) {
+              pollrankingbottom();
+            } else {
+              pollranking();
+            }
+          }
+        }
         $('.custom-filter select').on('change', function () {
           tableTotal()
-          if ($('#imdbpolls thead .sorting').hasClass('sorting_desc')) {
-            pollranking();
-          } else {
-            pollrankingbottom();
-          }
+          sorting_order()
         })
         $('.custom-filter input').on('input', function () {
           tableTotal()
-          if ($('#imdbpolls thead .sorting').hasClass('sorting_desc')) {
-            pollranking();
-          } else {
-            pollrankingbottom();
-          }
+          sorting_order()
         })
         $('#imdbpolls thead .sorting,#imdbpolls_paginate').on('click', function () {
           tableTotal()
-          if ($('#imdbpolls thead .sorting').hasClass('sorting_desc')) {
-            pollranking();
-          } else {
-            pollrankingbottom();
-          }
+          sorting_order()
         })
 
         function tableTotal() {
@@ -337,7 +344,7 @@ file.onreadystatechange = function () {
           var votesresult = 0;
           var hpresult = 0;
           for (var i = 0; i < row.length; i++) {
-            if (row[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) {} else {
+            if (row[i].querySelectorAll('td')[0].classList.contains('dataTables_empty')) { } else {
               votesresult += parseInt(row[i].querySelectorAll('td')[3].textContent.replace(',', ''))
               if ((row[i].querySelectorAll('td')[5].textContent).toLowerCase() == "yes") {
                 hpresult = hpresult + 1

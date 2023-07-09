@@ -1,10 +1,10 @@
 {
-  "totalpolls": 12882,
-  "totalvotes": 21361435,
+  "totalpolls": 12902,
+  "totalvotes": 21364056,
   "totalauthors": 487,
-  "totalfeatures": 645,
-  "lastupdated": "Monday, July 03, 2023 - 04:53 EST",
-  "rawdate": "2023-07-03 04:53:20.701749-05:00",
+  "totalfeatures": 646,
+  "lastupdated": "Sunday, July 09, 2023 - 09:02 EST",
+  "rawdate": "2023-07-09 09:02:40.850780-05:00",
   "authors": [
     {
       "authorid": "ur50452813",
@@ -85201,7 +85201,7 @@
       "author": "urbanemovies",
       "date": "2019/03/29",
       "votes": 802,
-      "featured": "No",
+      "featured": "Yes",
       "status": "Live"
     },
     {
@@ -90788,7 +90788,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2019/08/26",
-      "votes": 2955,
+      "votes": 2956,
       "featured": "No",
       "status": "Live"
     },
@@ -92548,7 +92548,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2019/10/14",
-      "votes": 1699,
+      "votes": 1702,
       "featured": "No",
       "status": "Live"
     },
@@ -93472,7 +93472,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2019/11/08",
-      "votes": 624,
+      "votes": 625,
       "featured": "No",
       "status": "Live"
     },
@@ -93769,7 +93769,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2019/11/16",
-      "votes": 853,
+      "votes": 854,
       "featured": "No",
       "status": "Live"
     },
@@ -94374,7 +94374,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2019/12/02",
-      "votes": 3183,
+      "votes": 3188,
       "featured": "No",
       "status": "Live"
     },
@@ -95474,7 +95474,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2019/12/29",
-      "votes": 580,
+      "votes": 581,
       "featured": "No",
       "status": "Live"
     },
@@ -97421,7 +97421,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/02/16",
-      "votes": 604,
+      "votes": 605,
       "featured": "No",
       "status": "Live"
     },
@@ -98114,7 +98114,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/03/06",
-      "votes": 669,
+      "votes": 670,
       "featured": "No",
       "status": "Live"
     },
@@ -98521,7 +98521,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/03/16",
-      "votes": 1343,
+      "votes": 1344,
       "featured": "No",
       "status": "Live"
     },
@@ -98961,7 +98961,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/03/28",
-      "votes": 651,
+      "votes": 652,
       "featured": "No",
       "status": "Live"
     },
@@ -99071,7 +99071,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/03/31",
-      "votes": 663,
+      "votes": 664,
       "featured": "No",
       "status": "Live"
     },
@@ -99104,7 +99104,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/04/01",
-      "votes": 569,
+      "votes": 570,
       "featured": "No",
       "status": "Live"
     },
@@ -99401,7 +99401,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/04/09",
-      "votes": 561,
+      "votes": 563,
       "featured": "No",
       "status": "Live"
     },
@@ -99643,7 +99643,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/04/16",
-      "votes": 391,
+      "votes": 392,
       "featured": "No",
       "status": "Live"
     },
@@ -101029,7 +101029,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/05/21",
-      "votes": 291,
+      "votes": 292,
       "featured": "No",
       "status": "Live"
     },
@@ -101502,7 +101502,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/06/02",
-      "votes": 663,
+      "votes": 664,
       "featured": "No",
       "status": "Live"
     },
@@ -101788,7 +101788,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/06/09",
-      "votes": 411,
+      "votes": 413,
       "featured": "No",
       "status": "Live"
     },
@@ -101832,7 +101832,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/06/10",
-      "votes": 543,
+      "votes": 546,
       "featured": "No",
       "status": "Live"
     },
@@ -101887,7 +101887,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/06/11",
-      "votes": 133,
+      "votes": 134,
       "featured": "No",
       "status": "Live"
     },
@@ -101942,7 +101942,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/06/13",
-      "votes": 601,
+      "votes": 604,
       "featured": "No",
       "status": "Live"
     },
@@ -101997,7 +101997,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/06/14",
-      "votes": 700,
+      "votes": 701,
       "featured": "No",
       "status": "Live"
     },
@@ -102085,7 +102085,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/06/17",
-      "votes": 387,
+      "votes": 389,
       "featured": "No",
       "status": "Live"
     },
@@ -102481,7 +102481,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/06/26",
-      "votes": 481,
+      "votes": 483,
       "featured": "No",
       "status": "Live"
     },
@@ -102800,7 +102800,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/07/04",
-      "votes": 586,
+      "votes": 587,
       "featured": "No",
       "status": "Live"
     },
@@ -102987,7 +102987,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/07/09",
-      "votes": 521,
+      "votes": 523,
       "featured": "No",
       "status": "Live"
     },
@@ -103416,7 +103416,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/07/20",
-      "votes": 1032,
+      "votes": 1033,
       "featured": "No",
       "status": "Live"
     },
@@ -103537,7 +103537,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/07/23",
-      "votes": 587,
+      "votes": 588,
       "featured": "No",
       "status": "Live"
     },
@@ -103592,7 +103592,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/07/25",
-      "votes": 379,
+      "votes": 380,
       "featured": "No",
       "status": "Live"
     },
@@ -103944,7 +103944,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/08/03",
-      "votes": 1592,
+      "votes": 1593,
       "featured": "No",
       "status": "Live"
     },
@@ -104835,7 +104835,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/08/26",
-      "votes": 508,
+      "votes": 509,
       "featured": "No",
       "status": "Live"
     },
@@ -104857,7 +104857,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/08/27",
-      "votes": 528,
+      "votes": 529,
       "featured": "No",
       "status": "Live"
     },
@@ -105803,7 +105803,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/09/23",
-      "votes": 246,
+      "votes": 247,
       "featured": "No",
       "status": "Live"
     },
@@ -106969,7 +106969,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/10/24",
-      "votes": 309,
+      "votes": 310,
       "featured": "No",
       "status": "Live"
     },
@@ -107321,7 +107321,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/11/03",
-      "votes": 94,
+      "votes": 95,
       "featured": "No",
       "status": "Live"
     },
@@ -107365,7 +107365,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/11/04",
-      "votes": 243,
+      "votes": 244,
       "featured": "No",
       "status": "Live"
     },
@@ -107398,7 +107398,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/11/05",
-      "votes": 210,
+      "votes": 211,
       "featured": "No",
       "status": "Live"
     },
@@ -107783,7 +107783,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/11/15",
-      "votes": 416,
+      "votes": 417,
       "featured": "No",
       "status": "Live"
     },
@@ -108058,7 +108058,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/11/23",
-      "votes": 337,
+      "votes": 340,
       "featured": "No",
       "status": "Live"
     },
@@ -108069,7 +108069,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/11/24",
-      "votes": 626,
+      "votes": 628,
       "featured": "No",
       "status": "Live"
     },
@@ -108872,7 +108872,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/12/17",
-      "votes": 236,
+      "votes": 237,
       "featured": "No",
       "status": "Live"
     },
@@ -109070,7 +109070,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/12/22",
-      "votes": 478,
+      "votes": 479,
       "featured": "No",
       "status": "Live"
     },
@@ -109125,7 +109125,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2020/12/23",
-      "votes": 329,
+      "votes": 330,
       "featured": "No",
       "status": "Live"
     },
@@ -110126,7 +110126,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2021/01/18",
-      "votes": 775,
+      "votes": 776,
       "featured": "No",
       "status": "Live"
     },
@@ -111677,7 +111677,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2021/02/27",
-      "votes": 1144,
+      "votes": 1149,
       "featured": "No",
       "status": "Live"
     },
@@ -111776,7 +111776,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2021/03/01",
-      "votes": 532,
+      "votes": 533,
       "featured": "No",
       "status": "Live"
     },
@@ -111930,7 +111930,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2021/03/06",
-      "votes": 1064,
+      "votes": 1069,
       "featured": "No",
       "status": "Live"
     },
@@ -112546,7 +112546,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2021/03/21",
-      "votes": 317,
+      "votes": 318,
       "featured": "No",
       "status": "Live"
     },
@@ -118321,7 +118321,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2021/08/19",
-      "votes": 236,
+      "votes": 237,
       "featured": "No",
       "status": "Live"
     },
@@ -118629,7 +118629,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2021/08/27",
-      "votes": 260,
+      "votes": 262,
       "featured": "No",
       "status": "Live"
     },
@@ -120180,7 +120180,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2021/10/10",
-      "votes": 657,
+      "votes": 658,
       "featured": "No",
       "status": "Live"
     },
@@ -120642,7 +120642,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2021/10/23",
-      "votes": 587,
+      "votes": 590,
       "featured": "No",
       "status": "Live"
     },
@@ -122666,7 +122666,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2021/12/16",
-      "votes": 401,
+      "votes": 402,
       "featured": "No",
       "status": "Live"
     },
@@ -123381,7 +123381,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/01/04",
-      "votes": 382,
+      "votes": 383,
       "featured": "No",
       "status": "Live"
     },
@@ -124470,7 +124470,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/02/04",
-      "votes": 484,
+      "votes": 485,
       "featured": "No",
       "status": "Live"
     },
@@ -124899,7 +124899,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/02/15",
-      "votes": 164,
+      "votes": 165,
       "featured": "No",
       "status": "Live"
     },
@@ -126087,7 +126087,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/03/15",
-      "votes": 1029,
+      "votes": 1030,
       "featured": "Yes",
       "status": "Live"
     },
@@ -128738,7 +128738,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/05/27",
-      "votes": 188,
+      "votes": 189,
       "featured": "No",
       "status": "Live"
     },
@@ -129519,7 +129519,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/06/03",
-      "votes": 133,
+      "votes": 134,
       "featured": "No",
       "status": "Live"
     },
@@ -130685,7 +130685,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/07/22",
-      "votes": 205,
+      "votes": 206,
       "featured": "No",
       "status": "Live"
     },
@@ -130916,7 +130916,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/07/16",
-      "votes": 245,
+      "votes": 247,
       "featured": "No",
       "status": "Live"
     },
@@ -131037,7 +131037,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/07/13",
-      "votes": 80,
+      "votes": 81,
       "featured": "No",
       "status": "Live"
     },
@@ -132280,7 +132280,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/08/28",
-      "votes": 266,
+      "votes": 267,
       "featured": "No",
       "status": "Live"
     },
@@ -135987,7 +135987,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/12/15",
-      "votes": 154,
+      "votes": 155,
       "featured": "No",
       "status": "Live"
     },
@@ -136042,7 +136042,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/12/13",
-      "votes": 348,
+      "votes": 350,
       "featured": "No",
       "status": "Live"
     },
@@ -136108,7 +136108,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/12/11",
-      "votes": 314,
+      "votes": 315,
       "featured": "No",
       "status": "Live"
     },
@@ -136768,7 +136768,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2022/12/22",
-      "votes": 396,
+      "votes": 398,
       "featured": "No",
       "status": "Live"
     },
@@ -138770,7 +138770,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/02/16",
-      "votes": 87,
+      "votes": 88,
       "featured": "No",
       "status": "Live"
     },
@@ -139474,7 +139474,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/03/22",
-      "votes": 80,
+      "votes": 81,
       "featured": "No",
       "status": "Live"
     },
@@ -140189,7 +140189,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/03/29",
-      "votes": 208,
+      "votes": 211,
       "featured": "No",
       "status": "Live"
     },
@@ -140277,7 +140277,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/03/27",
-      "votes": 164,
+      "votes": 165,
       "featured": "No",
       "status": "Live"
     },
@@ -140365,7 +140365,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/04/30",
-      "votes": 73,
+      "votes": 74,
       "featured": "No",
       "status": "Live"
     },
@@ -140574,7 +140574,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/04/25",
-      "votes": 80,
+      "votes": 81,
       "featured": "No",
       "status": "Live"
     },
@@ -140684,7 +140684,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/04/21",
-      "votes": 159,
+      "votes": 161,
       "featured": "No",
       "status": "Live"
     },
@@ -140915,7 +140915,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/04/15",
-      "votes": 124,
+      "votes": 126,
       "featured": "No",
       "status": "Live"
     },
@@ -141696,7 +141696,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/05/29",
-      "votes": 90,
+      "votes": 92,
       "featured": "No",
       "status": "Live"
     },
@@ -141960,7 +141960,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/05/21",
-      "votes": 92,
+      "votes": 95,
       "featured": "No",
       "status": "Live"
     },
@@ -142081,7 +142081,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/05/18",
-      "votes": 123,
+      "votes": 125,
       "featured": "No",
       "status": "Live"
     },
@@ -142169,7 +142169,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/05/15",
-      "votes": 163,
+      "votes": 168,
       "featured": "No",
       "status": "Live"
     },
@@ -142191,7 +142191,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/05/14",
-      "votes": 188,
+      "votes": 191,
       "featured": "No",
       "status": "Live"
     },
@@ -142235,7 +142235,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/05/13",
-      "votes": 156,
+      "votes": 160,
       "featured": "No",
       "status": "Live"
     },
@@ -142334,7 +142334,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/05/11",
-      "votes": 230,
+      "votes": 235,
       "featured": "No",
       "status": "Live"
     },
@@ -142928,7 +142928,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/06/22",
-      "votes": 66,
+      "votes": 72,
       "featured": "No",
       "status": "Live"
     },
@@ -143148,7 +143148,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/06/16",
-      "votes": 155,
+      "votes": 163,
       "featured": "No",
       "status": "Live"
     },
@@ -143346,7 +143346,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/06/10",
-      "votes": 210,
+      "votes": 217,
       "featured": "No",
       "status": "Live"
     },
@@ -143390,7 +143390,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/06/09",
-      "votes": 68,
+      "votes": 71,
       "featured": "No",
       "status": "Live"
     },
@@ -143434,7 +143434,7 @@
       "authorid": "ur91650024",
       "author": "Maxence_G",
       "date": "2023/06/07",
-      "votes": 93,
+      "votes": 96,
       "featured": "No",
       "status": "Live"
     },
@@ -143655,6 +143655,226 @@
       "author": "BonaFideBOSS",
       "date": "2023/07/01",
       "votes": 51,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/v8tcTX7y1tw/",
+      "title": "Greatest Films Directed by Canadians",
+      "type": "Titles",
+      "authorid": "ur0743304",
+      "author": "pbn",
+      "date": "2023/07/09",
+      "votes": 59,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/buS5GOSsd68/",
+      "title": "Favorite Movie Poster of Tom Hanks' Face",
+      "type": "Images",
+      "authorid": "ur0798233",
+      "author": "Gabrielfox",
+      "date": "2023/07/09",
+      "votes": 63,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/-QxBe78cdrw/",
+      "title": "Tom Hanks in Top 250",
+      "type": "Titles",
+      "authorid": "ur34779915",
+      "author": "Paok-Kilkis",
+      "date": "2023/07/09",
+      "votes": 80,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/4_yiiV9Vmak/",
+      "title": "IMDb Poll Board: Top 10 Movies of All Time",
+      "type": "Titles",
+      "authorid": "ur23877502",
+      "author": "jafar413",
+      "date": "2023/07/09",
+      "votes": 51,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/LZMh2TbCWWk/",
+      "title": "IMDb Poll Board: Favorite Movie Starting With \"L\"",
+      "type": "Titles",
+      "authorid": "ur75779804",
+      "author": "BonaFideBOSS",
+      "date": "2023/07/08",
+      "votes": 149,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/tIS1-ei29fY/",
+      "title": "Most Unnecessary Remake/Reboot or Sequel of 2023",
+      "type": "Titles",
+      "authorid": "ur34779915",
+      "author": "Paok-Kilkis",
+      "date": "2023/07/08",
+      "votes": 163,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/uNs2fxHOxd8/",
+      "title": "Best Famous Soundtrack by a Greek",
+      "type": "Titles",
+      "authorid": "ur116934045",
+      "author": "NoRa_FoKa",
+      "date": "2023/07/08",
+      "votes": 88,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/K28jP-HrEtI/",
+      "title": "Face-Off: Mad Mads",
+      "type": "Images",
+      "authorid": "ur0743304",
+      "author": "pbn",
+      "date": "2023/07/07",
+      "votes": 142,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/s-K92-RGHw4/",
+      "title": "Face-Off: Affleck's 'Argo' vs. Affleck's 'Air'",
+      "type": "Titles",
+      "authorid": "ur19488058",
+      "author": "rubyfruit76",
+      "date": "2023/07/07",
+      "votes": 87,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/zkErm_Y6tVg/",
+      "title": "Ryan Reynolds' Sagas",
+      "type": "Titles",
+      "authorid": "ur0798233",
+      "author": "Gabrielfox",
+      "date": "2023/07/07",
+      "votes": 103,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/_W6bblW2AHA/",
+      "title": "Conrad Buff - The Editor",
+      "type": "Titles",
+      "authorid": "ur57704188",
+      "author": "brijeshmarand",
+      "date": "2023/07/06",
+      "votes": 139,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/ZAKL8CJ9nJc/",
+      "title": "Famous Bruces",
+      "type": "Images",
+      "authorid": "ur52829101",
+      "author": "Djesika",
+      "date": "2023/07/06",
+      "votes": 186,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/PIvETYOO86g/",
+      "title": "Musical Bens",
+      "type": "Images",
+      "authorid": "ur0594717",
+      "author": "TsarStepan",
+      "date": "2023/07/06",
+      "votes": 94,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/062qvHifAPQ/",
+      "title": "Favorite TV Reunion Movie",
+      "type": "Titles",
+      "authorid": "ur32931141",
+      "author": "TheMovieSmith",
+      "date": "2023/07/06",
+      "votes": 99,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/WkRw7tRLqQM/",
+      "title": "Favorite Asian American Movie",
+      "type": "Titles",
+      "authorid": "ur0743304",
+      "author": "pbn",
+      "date": "2023/07/05",
+      "votes": 170,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/85loUkqNu1A/",
+      "title": "Oscar Winning LGBTQ Roles",
+      "type": "Images",
+      "authorid": "ur52829101",
+      "author": "Djesika",
+      "date": "2023/07/05",
+      "votes": 154,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/aeATqtbYKz8/",
+      "title": "So your car is out of gas...",
+      "type": "Images",
+      "authorid": "ur6008083",
+      "author": "yrnej",
+      "date": "2023/07/05",
+      "votes": 132,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/B0VGbUdSUmc/",
+      "title": "100 Greatest Americans",
+      "type": "People",
+      "authorid": "ur122799232",
+      "author": "ethangentle",
+      "date": "2023/07/04",
+      "votes": 196,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/yFZcH0sRXPg/",
+      "title": "IMDb Poll Board: Favorite Movie About Independence",
+      "type": "Titles",
+      "authorid": "ur57704188",
+      "author": "brijeshmarand",
+      "date": "2023/07/04",
+      "votes": 173,
+      "featured": "No",
+      "status": "Live"
+    },
+    {
+      "url": "https://www.imdb.com/poll/bvdg0NZ02tc/",
+      "title": "Shirtless Schwarzenegger",
+      "type": "Images",
+      "authorid": "ur12089554",
+      "author": "mariojacobs",
+      "date": "2023/07/04",
+      "votes": 132,
       "featured": "No",
       "status": "Live"
     }

@@ -412,29 +412,33 @@ file.onreadystatechange = function () {
 
       tableTotal()
       pollranking()
+      function sorting_order() {
+        var reverse_cols = ["Votes", "Featured"]
+        if ($('#allimdbpolls thead .sorting').hasClass('sorting_desc')) {
+          if (reverse_cols.includes($('#allimdbpolls thead .sorting.sorting_desc').html())) {
+            pollranking()
+          } else {
+            pollrankingbottom()
+          }
+        } else {
+          if (reverse_cols.includes($('#allimdbpolls thead .sorting.sorting_asc').html())) {
+            pollrankingbottom()
+          } else {
+            pollranking()
+          }
+        }
+      }
       $('.custom-filter select').on('change', function () {
         tableTotal()
-        if ($('#allimdbpolls thead .sorting').hasClass('sorting_desc')) {
-          pollranking();
-        } else {
-          pollrankingbottom();
-        }
+        sorting_order()
       })
       $('.custom-filter input').on('input', function () {
         tableTotal()
-        if ($('#allimdbpolls thead .sorting').hasClass('sorting_desc')) {
-          pollranking();
-        } else {
-          pollrankingbottom();
-        }
+        sorting_order()
       })
       $('#allimdbpolls thead .sorting,#allimdbpolls_paginate').on('click', function () {
         tableTotal()
-        if ($('#allimdbpolls thead .sorting').hasClass('sorting_desc')) {
-          pollranking();
-        } else {
-          pollrankingbottom();
-        }
+        sorting_order()
       })
 
       var lbtable = $(leaderboard).DataTable({
@@ -539,29 +543,33 @@ file.onreadystatechange = function () {
 
       ranking();
       leaderboardTotal();
+      function ranking_order() {
+        var reverse_cols = ["First Poll"]
+        if ($('#leaderboard thead .sorting').hasClass('sorting_desc')) {
+          if (reverse_cols.includes($('#leaderboard thead .sorting.sorting_desc').html())) {
+            rankingbottom();
+          } else {
+            ranking()
+          }
+        } else {
+          if (reverse_cols.includes($('#leaderboard thead .sorting.sorting_asc').html())) {
+            ranking()
+          } else {
+            rankingbottom()
+          }
+        }
+      }
       $('.custom-filter select').on('change', function () {
         leaderboardTotal();
-        if ($('#leaderboard thead .sorting').hasClass('sorting_desc')) {
-          ranking();
-        } else {
-          rankingbottom();
-        }
+        ranking_order()
       })
       $('.custom-filter input').on('input', function () {
         leaderboardTotal();
-        if ($('#leaderboard thead .sorting').hasClass('sorting_desc')) {
-          ranking();
-        } else {
-          rankingbottom();
-        }
+        ranking_order()
       })
       $('#leaderboard thead .sorting,#leaderboard_paginate').on('click', function () {
         leaderboardTotal();
-        if ($('#leaderboard thead .sorting').hasClass('sorting_desc')) {
-          ranking();
-        } else {
-          rankingbottom();
-        }
+        ranking_order()
       })
 
       for (let index = 0; index < pollTimeline["pollsInEachYear"].length; index++) {
